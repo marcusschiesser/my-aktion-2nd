@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Spendenformular bearbeiten</h1>
+
+		<h:form>
+
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Hintergrundfarbe:"></h:outputLabel>
+				<h:selectOneMenu id="bgColor" 
+					value="#{spendeFormEditController.bgColor}" 
+					>
+					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
+					<f:selectItem itemLabel="#000000" itemValue="000000" />
+					<f:selectItem itemLabel="#FF0000" itemValue="FF0000" />
+					<f:ajax render="url"/>
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Textfarbe:"></h:outputLabel>
+				<h:selectOneMenu id="textColor" 
+					value="#{spendeFormEditController.textColor}"
+					 >
+					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
+					<f:selectItem itemLabel="#000000" itemValue="000000" />
+					<f:selectItem itemLabel="#FF0000" itemValue="FF0000" />
+					<f:ajax render="url"/>
+				</h:selectOneMenu>
+
+				<h:outputLabel value="URL des Formulars:"></h:outputLabel>
+				<h:inputTextarea id="url" rows="6" cols="30" readonly="true"
+					value="#{spendeFormEditController.url}" />
+			</h:panelGrid>
+
+			<h:commandButton value="OK" action="#{spendeFormEditController.doOk}" />
+		</h:form>
+	</ui:define>
+</ui:composition>

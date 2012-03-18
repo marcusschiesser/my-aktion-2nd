@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Meine Aktionen</h1>
+
+		<h:form>
+			<h:dataTable value="#{aktionListProducer.aktionen}" var="aktion">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{aktion.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Spendenziel" />
+					</f:facet>
+					<h:outputText value="#{aktion.spendenZiel}">
+						<f:convertNumber type="currency" currencyCode="EUR"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="bisher gespendet" />
+					</f:facet>
+					<h:outputText value="#{aktion.bisherGespendet}">
+						<f:convertNumber type="currency" currencyCode="EUR"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<h:commandLink value="Editieren"
+						action="#{aktionListController.doEditAktion(aktion)}" />
+				</h:column>
+				<h:column>
+					<h:commandLink value="Spendenliste"
+						action="#{aktionListController.doListSpende(aktion)}" />
+				</h:column>
+				<h:column>
+					<h:commandLink value="Formular" 
+						action="#{aktionListController.doEditSpendeForm(aktion)}" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Aktion hinzufügen"
+				action="#{aktionListController.doAddAktion}" />
+		</h:form>
+	</ui:define>
+</ui:composition>

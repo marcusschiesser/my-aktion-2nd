@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Spenderliste "<h:outputText value="#{spendeListController.aktion.name}" />"</h1>
+		
+		<h2>Empfängerkonto: <h:outputText value="#{spendeListController.aktion.konto.name}" />
+		, Konto-Nr.: <h:outputText value="#{spendeListController.aktion.konto.kontoNr}" />, 
+		BLZ <h:outputText value="#{spendeListController.aktion.konto.blz}" />, 
+		<h:outputText value="#{spendeListController.aktion.konto.nameDerBank}" /></h2>
+
+		<h:form>
+			<h:dataTable value="#{spendeListController.aktion.spenden}" var="spende">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{spende.spenderName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Konto-Nr." />
+					</f:facet>
+					<h:outputText value="#{spende.konto.kontoNr}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="BLZ" />
+					</f:facet>
+					<h:outputText value="#{spende.konto.blz}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Name der Bank" />
+					</f:facet>
+					<h:outputText value="#{spende.konto.nameDerBank}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Spendenbetrag" />
+					</f:facet>
+					<h:outputText value="#{spende.betrag}">
+						<f:convertNumber type="currency" currencyCode="EUR"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Quittung" />
+					</f:facet>
+					<h:outputText value="#{spende.quittung ? 'ja' : 'nein'}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Status" />
+					</f:facet>
+					<h:outputText value="#{spendeListController.convertStatus(spende.status)}" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="OK"
+				action="#{spendeListController.doOk}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
