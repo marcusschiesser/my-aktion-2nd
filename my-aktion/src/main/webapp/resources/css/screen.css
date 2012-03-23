@@ -9,16 +9,15 @@ body {
     margin: 0 auto;
     padding: 0 20px 10px 20px;
     border: 1px solid #666666;
-    width: 865px; /* subtract 40px from banner width for padding */
-    padding-top: 110px;
+    width: 865px; 
+    padding-top: 10px;
 }
-#sidebar {
-    font-size: 0.9em;
-    width: 225px;
-    float: right;
+#header {
+    font-size: 1.3em;
     border: 1px solid #666666;
     background: #EAECEE;
     padding: 0 15px 5px 15px;
+    margin-bottom: 50px;
 }
 #footer {
     clear: both;
@@ -27,10 +26,7 @@ body {
     font-size: 0.85em;
     padding: 3em 0 0 0;
 }
-code {
-    font-size: 1.1em;
+h2 {
+	font-size: 1.2em;
 }
-span.invalid {
-    padding-left: 3px;
-    color: red;
 }
