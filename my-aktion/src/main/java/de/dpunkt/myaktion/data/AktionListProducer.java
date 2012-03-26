@@ -21,13 +21,12 @@ public class AktionListProducer implements Serializable {
 
 	private List<Aktion> aktionen;
 
-	public List<Aktion> getAktionen() {
-		return aktionen;
+	public AktionListProducer() {
+		aktionen = createMockAktionen();
 	}
 
-	@PostConstruct
-	public void init() {
-		aktionen = createMockAktionen();
+	public List<Aktion> getAktionen() {
+		return aktionen;
 	}
 
 	public List<Aktion> createMockAktionen() {
