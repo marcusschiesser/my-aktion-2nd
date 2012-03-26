@@ -10,6 +10,10 @@
 		<h:form>
 			<h:dataTable value="#{aktionListProducer.aktionen}" var="aktion">
 				<h:column>
+					<h:commandLink value="x"
+						actionListener="#{aktionListController.doDeleteAktion(aktion)}" />
+				</h:column>
+				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Name" />
 					</f:facet>
