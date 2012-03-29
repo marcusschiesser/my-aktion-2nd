@@ -13,9 +13,13 @@
 			value="#{geldSpendenController.bgColor}">
 			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
 		</f:viewParam>
-		<f:viewParam name="textColor"
+		<f:viewParam id="textColor" name="textColor"
 			value="#{geldSpendenController.textColor}">
 			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
+		</f:viewParam>
+		<f:viewParam id="aktionId" name="aktionId"
+			value="#{geldSpendenController.aktionId}">
+			<f:validateRegex pattern="[0-9]+" />
 		</f:viewParam>
 	</f:metadata>
 </h:head>
@@ -26,6 +30,7 @@
 	<h:messages globalOnly="true" />
 	<h:message for="bgColor" style="color: red;" />
 	<h:message for="textColor" style="color: red;" />
+	<h:message for="aktionId" style="color: red;" />
 	<h:form>
 
 		<h:panelGrid columns="3">
