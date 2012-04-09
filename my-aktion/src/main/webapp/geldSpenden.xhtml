@@ -17,9 +17,8 @@
 			value="#{geldSpendenController.textColor}">
 			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
 		</f:viewParam>
-		<f:viewParam id="aktionId" name="aktionId"
+		<f:viewParam id="aktionId" name="aktionId" converter="javax.faces.Long"
 			value="#{geldSpendenController.aktionId}">
-			<f:validateRegex pattern="[0-9]+" />
 		</f:viewParam>
 	</f:metadata>
 </h:head>
