@@ -16,6 +16,7 @@
 				<h:outputLabel value="Name:"></h:outputLabel>
 				<h:inputText id="a_name" value="#{aktionEditController.aktion.name}"
 					validatorMessage="Der Name einer Aktion muss min. 4 und darf max. 30 Zeichen lang sein.">
+					<f:passThroughAttribute name="placeholder" value="Name der Spendenaktion" />
 					<f:validateRequired />
 					<f:validateLength minimum="4" maximum="30" />
 				</h:inputText>
