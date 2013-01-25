@@ -15,6 +15,9 @@ public class AktionListController {
 
 	@Inject
 	private SpendeListController spendeListController;
+	
+	@Inject
+	private SpendeFormEditController spendeFormEditController;
 
 	public String doAddAktion() {
 		aktionEditController.setAktionToEdit(Mode.ADD);
@@ -27,6 +30,7 @@ public class AktionListController {
 	}
 
 	public String doEditSpendeForm(Aktion aktion) {
+		spendeFormEditController.setAktion(aktion);
 		return Pages.SPENDE_FORM_EDIT;
 	}
 

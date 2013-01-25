@@ -8,6 +8,7 @@ public class Aktion {
 	private Double spendenBetrag;
 	private Double bisherGespendet;
 	private Konto konto;
+	private Long aktionId;
 	private List<Spende> spenden;
 	
 	public Aktion() {
@@ -43,6 +44,12 @@ public class Aktion {
 	}
 	public void setKonto(Konto konto) {
 		this.konto = konto;
+	}
+	public void setId(Long aktionId) {
+		this.aktionId=aktionId;
+	}
+	public Long getId() {
+		return aktionId;
 	}
 	public List<Spende> getSpenden() {
 		return spenden;
