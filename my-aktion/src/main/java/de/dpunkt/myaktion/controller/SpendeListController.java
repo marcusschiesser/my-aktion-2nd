@@ -1,14 +1,18 @@
 package de.dpunkt.myaktion.controller;
 
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import de.dpunkt.myaktion.model.Aktion;
 import de.dpunkt.myaktion.model.Spende.Status;
 
-@RequestScoped
+@SessionScoped
 @Named
-public class SpendeListController {
+public class SpendeListController implements Serializable {
+	private static final long serialVersionUID = 437878972432L;
+
 	private Aktion aktion;
 
 	public Aktion getAktion() {
