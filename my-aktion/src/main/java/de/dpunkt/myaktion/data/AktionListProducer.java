@@ -3,10 +3,8 @@ package de.dpunkt.myaktion.data;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-
 import de.dpunkt.myaktion.model.Aktion;
 import de.dpunkt.myaktion.model.Konto;
 import de.dpunkt.myaktion.model.Spende;
@@ -17,7 +15,6 @@ import de.dpunkt.myaktion.model.Spende.Status;
 public class AktionListProducer implements Serializable {
 
 	private static final long serialVersionUID = -182866064791747156L;
-
 	private List<Aktion> aktionen;
 
 	public AktionListProducer() {
@@ -29,7 +26,6 @@ public class AktionListProducer implements Serializable {
 	}
 
 	public List<Aktion> createMockAktionen() {
-
 		Spende spende1 = new Spende();
 		spende1.setSpenderName("Heinz Schmidt");
 		spende1.setBetrag(20d);
@@ -53,6 +49,7 @@ public class AktionListProducer implements Serializable {
 		aktion1.setSpendenZiel(1000d);
 		aktion1.setBisherGespendet(258d);
 		aktion1.setSpendenBetrag(20d);
+		aktion1.setId(1L);
 		aktion1.setKonto(new Konto("Max Mustermann", "ABC Bank", "100200300",
 				"12345678"));
 		aktion1.setSpenden(spenden);
@@ -62,9 +59,9 @@ public class AktionListProducer implements Serializable {
 		aktion2.setSpendenZiel(2500d);
 		aktion2.setBisherGespendet(742d);
 		aktion2.setSpendenBetrag(25d);
+		aktion2.setId(2L);
 		aktion2.setKonto(aktion1.getKonto());
 		aktion2.setSpenden(spenden);
-
 		List<Aktion> ret = new LinkedList<Aktion>();
 		ret.add(aktion1);
 		ret.add(aktion2);
