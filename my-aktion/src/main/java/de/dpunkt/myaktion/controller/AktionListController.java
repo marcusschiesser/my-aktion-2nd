@@ -13,7 +13,7 @@ import de.dpunkt.myaktion.model.Aktion;
 @Named
 public class AktionListController implements Serializable {
 
-	private static final long serialVersionUID = 25875238972L;
+	private static final long serialVersionUID = 8693277383648025822L;
 
 	@Inject
 	private AktionEditController aktionEditController;
