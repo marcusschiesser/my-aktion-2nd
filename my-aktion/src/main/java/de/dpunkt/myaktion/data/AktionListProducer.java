@@ -32,14 +32,14 @@ public class AktionListProducer implements Serializable {
 		spende1.setQuittung(true);
 		spende1.setStatus(Status.UEBERWIESEN);
 		spende1.setKonto(new Konto(spende1.getSpenderName(), "XXX Bank",
-				"DE44876543210000123456", "BXXXDEB0XXX"));
+				"DE44876543210000123456"));
 		Spende spende2 = new Spende();
 		spende2.setSpenderName("Karl Meier");
 		spende2.setBetrag(30d);
 		spende2.setQuittung(false);
 		spende2.setStatus(Status.IN_BEARBEITUNG);
 		spende2.setKonto(new Konto(spende2.getSpenderName(), "YYY Bank",
-				"DE44864275310000654321", "BYYYDEB0XXX"));
+				"DE44864275310000654321"));
 		List<Spende> spenden = new LinkedList<Spende>();
 		spenden.add(spende1);
 		spenden.add(spende2);
@@ -51,7 +51,7 @@ public class AktionListProducer implements Serializable {
 		aktion1.setSpendenBetrag(20d);
 		aktion1.setId(1L);
 		aktion1.setKonto(new Konto("Max Mustermann", "ABC Bank",
-				"DE44123456780100200300", "BABCDEB0XXX"));
+				"DE44123456780100200300"));
 		aktion1.setSpenden(spenden);
 
 		Aktion aktion2 = new Aktion();

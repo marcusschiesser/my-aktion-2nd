@@ -63,13 +63,6 @@
 				</h:inputText>
 				<h:message for="b_konto" style="color: red;" />
 
-				<h:outputLabel value="BIC:"></h:outputLabel>
-				<h:inputText id="b_blz"
-					value="#{aktionEditController.aktion.konto.bic}">
-					<f:validateRequired />
-				</h:inputText>
-				<h:message for="b_blz" style="color: red;" />
-
 				<h:outputLabel value="Name der Bank"></h:outputLabel>
 				<h:inputText id="b_name_bank"
 					value="#{aktionEditController.aktion.konto.nameDerBank}">

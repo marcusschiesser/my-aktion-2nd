@@ -47,13 +47,6 @@
 			</h:inputText>
 			<h:message for="iban" style="color: red;" />
 
-			<h:outputLabel value="BIC:"></h:outputLabel>
-			<h:inputText id="bic"
-				value="#{geldSpendenController.spende.konto.bic}">
-				<f:validateRequired />
-			</h:inputText>
-			<h:message for="bic" style="color: red;" />
-
 			<h:outputLabel value="Name der Bank:"></h:outputLabel>
 			<h:inputText id="name_bank"
 				value="#{geldSpendenController.spende.konto.nameDerBank}">

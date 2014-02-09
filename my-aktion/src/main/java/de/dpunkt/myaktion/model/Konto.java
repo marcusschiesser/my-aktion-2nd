@@ -4,19 +4,17 @@ public class Konto {
 	private String name;
 	private String nameDerBank;
 	private String iban;
-	private String bic;
-	
-	public Konto() {
-		this(null, null, null, null);
+
+    public Konto() {
+		this(null, null, null);
 	}
 	
-	public Konto(String name, String nameDerBank, String iban, String bic) {
+	public Konto(String name, String nameDerBank, String iban) {
 		super();
 		this.name = name;
 		this.nameDerBank = nameDerBank;
 		this.iban = iban;
-		this.bic = bic;
-	}
+    }
 
 	public String getName() {
 		return name;
@@ -36,12 +34,6 @@ public class Konto {
 	public void setIban(String iban) {
 		this.iban = iban;
 	}
-	public String getBic() {
-		return bic;
-	}
-	public void setBic(String bic) {
-		this.bic = bic;
-	}
-	
+
 
 }
