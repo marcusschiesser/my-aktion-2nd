@@ -56,16 +56,16 @@
 				</h:inputText>
 				<h:message for="b_name" style="color: red;" />
 
-				<h:outputLabel value="Konto-Nr.:"></h:outputLabel>
+				<h:outputLabel value="IBAN:"></h:outputLabel>
 				<h:inputText id="b_konto"
-					value="#{aktionEditController.aktion.konto.kontoNr}">
+					value="#{aktionEditController.aktion.konto.iban}">
 					<f:validateRequired />
 				</h:inputText>
 				<h:message for="b_konto" style="color: red;" />
 
-				<h:outputLabel value="BLZ:"></h:outputLabel>
+				<h:outputLabel value="BIC:"></h:outputLabel>
 				<h:inputText id="b_blz"
-					value="#{aktionEditController.aktion.konto.blz}">
+					value="#{aktionEditController.aktion.konto.bic}">
 					<f:validateRequired />
 				</h:inputText>
 				<h:message for="b_blz" style="color: red;" />

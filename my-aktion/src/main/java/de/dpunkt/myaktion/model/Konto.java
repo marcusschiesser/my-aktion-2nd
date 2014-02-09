@@ -3,19 +3,19 @@ package de.dpunkt.myaktion.model;
 public class Konto {
 	private String name;
 	private String nameDerBank;
-	private String kontoNr;
-	private String blz;
+	private String iban;
+	private String bic;
 	
 	public Konto() {
 		this(null, null, null, null);
 	}
 	
-	public Konto(String name, String nameDerBank, String kontoNr, String blz) {
+	public Konto(String name, String nameDerBank, String iban, String bic) {
 		super();
 		this.name = name;
 		this.nameDerBank = nameDerBank;
-		this.kontoNr = kontoNr;
-		this.blz = blz;
+		this.iban = iban;
+		this.bic = bic;
 	}
 
 	public String getName() {
@@ -30,17 +30,17 @@ public class Konto {
 	public void setNameDerBank(String nameDerBank) {
 		this.nameDerBank = nameDerBank;
 	}
-	public String getKontoNr() {
-		return kontoNr;
+	public String getIban() {
+		return iban;
 	}
-	public void setKontoNr(String kontoNr) {
-		this.kontoNr = kontoNr;
+	public void setIban(String iban) {
+		this.iban = iban;
 	}
-	public String getBlz() {
-		return blz;
+	public String getBic() {
+		return bic;
 	}
-	public void setBlz(String blz) {
-		this.blz = blz;
+	public void setBic(String bic) {
+		this.bic = bic;
 	}
 	
 

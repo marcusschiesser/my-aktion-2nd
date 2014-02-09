@@ -40,19 +40,19 @@
 			</h:inputText>
 			<h:message for="name" style="color: red;" />
 
-			<h:outputLabel value="Konto-Nr.:"></h:outputLabel>
-			<h:inputText id="konto"
-				value="#{geldSpendenController.spende.konto.kontoNr}">
+			<h:outputLabel value="IBAN:"></h:outputLabel>
+			<h:inputText id="iban"
+				value="#{geldSpendenController.spende.konto.iban}">
 				<f:validateRequired />
 			</h:inputText>
-			<h:message for="konto" style="color: red;" />
+			<h:message for="iban" style="color: red;" />
 
-			<h:outputLabel value="BLZ:"></h:outputLabel>
-			<h:inputText id="blz"
-				value="#{geldSpendenController.spende.konto.blz}">
+			<h:outputLabel value="BIC:"></h:outputLabel>
+			<h:inputText id="bic"
+				value="#{geldSpendenController.spende.konto.bic}">
 				<f:validateRequired />
 			</h:inputText>
-			<h:message for="blz" style="color: red;" />
+			<h:message for="bic" style="color: red;" />
 
 			<h:outputLabel value="Name der Bank:"></h:outputLabel>
 			<h:inputText id="name_bank"

@@ -8,8 +8,8 @@
 		<h1>Spenderliste "<h:outputText value="#{spendeListController.aktion.name}" />"</h1>
 		
 		<h2>Empfängerkonto: <h:outputText value="#{spendeListController.aktion.konto.name}" />
-		, Konto-Nr.: <h:outputText value="#{spendeListController.aktion.konto.kontoNr}" />, 
-		BLZ <h:outputText value="#{spendeListController.aktion.konto.blz}" />, 
+		, Konto-Nr.: <h:outputText value="#{spendeListController.aktion.konto.iban}" />,
+		BLZ <h:outputText value="#{spendeListController.aktion.konto.bic}" />,
 		<h:outputText value="#{spendeListController.aktion.konto.nameDerBank}" /></h2>
 
 		<h:form>
@@ -22,15 +22,15 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Konto-Nr." />
+						<h:outputText value="IBAN" />
 					</f:facet>
-					<h:outputText value="#{spende.konto.kontoNr}" />
+					<h:outputText value="#{spende.konto.iban}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="BLZ" />
+						<h:outputText value="BIC" />
 					</f:facet>
-					<h:outputText value="#{spende.konto.blz}" />
+					<h:outputText value="#{spende.konto.bic}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
