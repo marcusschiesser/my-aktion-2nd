@@ -41,7 +41,7 @@ public class AktionListProducer implements Serializable {
         spende2.setStatus(Status.IN_BEARBEITUNG);
         spende2.setKonto(new Konto(spende2.getSpenderName(), "YYY Bank",
                 "DE44864275310000654321"));
-        List<Spende> spenden = new LinkedList<Spende>();
+        List<Spende> spenden = new LinkedList<>();
         spenden.add(spende1);
         spenden.add(spende2);
 
@@ -63,7 +63,7 @@ public class AktionListProducer implements Serializable {
         aktion2.setId(2L);
         aktion2.setKonto(aktion1.getKonto());
         aktion2.setSpenden(spenden);
-        List<Aktion> ret = new LinkedList<Aktion>();
+        List<Aktion> ret = new LinkedList<>();
         ret.add(aktion1);
         ret.add(aktion2);
         return ret;
