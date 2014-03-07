@@ -1,13 +1,12 @@
 package de.dpunkt.myaktion.controller;
 
-import java.io.Serializable;
+import de.dpunkt.myaktion.data.AktionListProducer;
+import de.dpunkt.myaktion.data.AktionProducer;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import de.dpunkt.myaktion.data.AktionListProducer;
-import de.dpunkt.myaktion.model.Aktion;
+import java.io.Serializable;
 
 @SessionScoped
 @Named
@@ -17,43 +16,18 @@ public class AktionEditController implements Serializable {
 	@Inject
 	private AktionListProducer aktionListProducer;
 
-	public enum Mode {
-		EDIT, ADD
-	};
-
-	private Aktion aktion;
-	private Mode mode;
-
-	private Mode getMode() {
-		return mode;
-	}
-
-	public Aktion getAktion() {
-		return aktion;
-	}
-
-	public void setAktionToEdit(Mode mode) {
-		setAktionToEdit(mode, new Aktion());
-	}
-
-	public void setAktionToEdit(Mode mode, Aktion aktion) {
-		this.aktion = aktion;
-		this.mode = mode;
-	}
+    @Inject
+    private AktionProducer aktionProducer;
 
 	public String doSave() {
-		if(getMode()==Mode.ADD) {
-			aktionListProducer.getAktionen().add(aktion);
+		if(aktionProducer.isAddMode()) {
+			aktionListProducer.getAktionen().add(aktionProducer.getSelectedAktion());
 		}
 		return Pages.AKTION_LIST;
 	}
 
 	public String doCancel() {
 		return Pages.AKTION_LIST;
-	}
-	
-	public String getTitle() {
-		return getMode()==Mode.EDIT ? "Aktionsdaten editieren" : "Neue Aktion anlegen";
 	}
 
 }

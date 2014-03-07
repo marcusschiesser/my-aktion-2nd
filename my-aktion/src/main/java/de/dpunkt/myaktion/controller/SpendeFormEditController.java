@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,7 +18,9 @@ public class SpendeFormEditController implements Serializable {
 
 	private String textColor = "000000";
 	private String bgColor = "ffffff";
-	private Aktion aktion;
+
+    @Inject
+    private de.dpunkt.myaktion.data.AktionProducer aktionProducer;
 
 	public String doOk() {
 		return Pages.AKTION_LIST;
@@ -38,7 +41,7 @@ public class SpendeFormEditController implements Serializable {
 	
 	public String getUrl() {
 		return getAppUrl()+"/"+Pages.GELD_SPENDEN+".jsf" + "?bgColor=" + bgColor
-				 + "&textColor=" + textColor + "&aktionId=" + aktion.getId();
+				 + "&textColor=" + textColor + "&aktionId=" + aktionProducer.getSelectedAktion().getId();
 	}
 
 	public String getTextColor() {
@@ -57,12 +60,4 @@ public class SpendeFormEditController implements Serializable {
 		this.bgColor = bgColor;
 	}
 	
-	public Aktion getAktion() {
-		return aktion;
-	}
-
-	public void setAktion(Aktion aktion) {
-		this.aktion = aktion;
-	}
-
 }

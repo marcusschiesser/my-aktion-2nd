@@ -13,16 +13,6 @@ import de.dpunkt.myaktion.model.Spende.Status;
 public class SpendeListController implements Serializable {
 	private static final long serialVersionUID = 437878972432L;
 
-	private Aktion aktion;
-
-	public Aktion getAktion() {
-		return aktion;
-	}
-
-	public void setAktion(Aktion aktion) {
-		this.aktion = aktion;
-	}
-
 	public String doOk() {
 		return Pages.AKTION_LIST;
 	}

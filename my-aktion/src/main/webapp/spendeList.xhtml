@@ -5,14 +5,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h1>Spenderliste "<h:outputText value="#{spendeListController.aktion.name}" />"</h1>
+		<h1>Spenderliste "<h:outputText value="#{aktionProducer.selectedAktion.name}" />"</h1>
 		
-		<h2>Empfängerkonto: <h:outputText value="#{spendeListController.aktion.konto.name}" />,
-		IBAN: <h:outputText value="#{spendeListController.aktion.konto.iban}" />,
-		<h:outputText value="#{spendeListController.aktion.konto.nameDerBank}" /></h2>
+		<h2>Empfängerkonto: <h:outputText value="#{aktionProducer.selectedAktion.konto.name}" />,
+		IBAN: <h:outputText value="#{aktionProducer.selectedAktion.konto.iban}" />,
+		<h:outputText value="#{aktionProducer.selectedAktion.konto.nameDerBank}" /></h2>
 
 		<h:form>
-			<h:dataTable value="#{spendeListController.aktion.spenden}" var="spende">
+			<h:dataTable value="#{aktionProducer.selectedAktion.spenden}" var="spende">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Name" />

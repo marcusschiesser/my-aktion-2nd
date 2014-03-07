@@ -6,7 +6,7 @@
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
 		<h1>
-			<h:outputText value="#{aktionEditController.title}" />
+			<h:outputText value="#{aktionProducer.addMode ? 'Neue Aktion anlegen' : 'Aktionsdaten editieren'}" />
 		</h1>
 
 		<h:form acceptcharset="ISO-8859-1">
@@ -14,7 +14,7 @@
 				<f:facet name="header">Allgemein</f:facet>
 
 				<h:outputLabel value="Name:"></h:outputLabel>
-				<h:inputText id="a_name" value="#{aktionEditController.aktion.name}"
+				<h:inputText id="a_name" value="#{aktionProducer.selectedAktion.name}"
 					validatorMessage="Der Name einer Aktion muss min. 4 und darf max. 30 Zeichen lang sein.">
 					<f:passThroughAttribute name="placeholder" value="Name der Spendenaktion" />
 					<f:validateRequired />
@@ -25,7 +25,7 @@
 				<h:outputLabel value="Spendenziel:"></h:outputLabel>
 				<h:panelGroup>
 					<h:inputText id="a_spendenziel"
-						value="#{aktionEditController.aktion.spendenZiel}"
+						value="#{aktionProducer.selectedAktion.spendenZiel}"
 						validatorMessage="Das Spendenziel für die Aktion muss min. 10 Euro sein.">
 						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 						<f:validateRequired />
@@ -37,7 +37,7 @@
 				<h:outputLabel value="Spendenbetrag:"></h:outputLabel>
 				<h:panelGroup>
 					<h:inputText id="a_spendenbetrag"
-						value="#{aktionEditController.aktion.spendenBetrag}"
+						value="#{aktionProducer.selectedAktion.spendenBetrag}"
 						validatorMessage="Der Spendenbetrag muss min. 1 Euro sein.">
 						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 						<f:validateRequired />
@@ -51,21 +51,21 @@
 
 				<h:outputLabel value="Name:"></h:outputLabel>
 				<h:inputText id="b_name"
-					value="#{aktionEditController.aktion.konto.name}">
+					value="#{aktionProducer.selectedAktion.konto.name}">
 					<f:validateRequired />
 				</h:inputText>
 				<h:message for="b_name" style="color: red;" />
 
 				<h:outputLabel value="IBAN:"></h:outputLabel>
 				<h:inputText id="b_konto"
-					value="#{aktionEditController.aktion.konto.iban}">
+					value="#{aktionProducer.selectedAktion.konto.iban}">
 					<f:validateRequired />
 				</h:inputText>
 				<h:message for="b_konto" style="color: red;" />
 
 				<h:outputLabel value="Name der Bank"></h:outputLabel>
 				<h:inputText id="b_name_bank"
-					value="#{aktionEditController.aktion.konto.nameDerBank}">
+					value="#{aktionProducer.selectedAktion.konto.nameDerBank}">
 					<f:validateRequired />
 				</h:inputText>
 				<h:message for="b_name_bank" style="color: red;" />
