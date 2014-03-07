@@ -11,23 +11,23 @@ import java.io.Serializable;
 @SessionScoped
 @Named
 public class AktionEditController implements Serializable {
-	private static final long serialVersionUID = 2815796004558360299L;
-	
-	@Inject
-	private AktionListProducer aktionListProducer;
+    private static final long serialVersionUID = 2815796004558360299L;
+
+    @Inject
+    private AktionListProducer aktionListProducer;
 
     @Inject
     private AktionProducer aktionProducer;
 
-	public String doSave() {
-		if(aktionProducer.isAddMode()) {
-			aktionListProducer.getAktionen().add(aktionProducer.getSelectedAktion());
-		}
-		return Pages.AKTION_LIST;
-	}
+    public String doSave() {
+        if (aktionProducer.isAddMode()) {
+            aktionListProducer.getAktionen().add(aktionProducer.getSelectedAktion());
+        }
+        return Pages.AKTION_LIST;
+    }
 
-	public String doCancel() {
-		return Pages.AKTION_LIST;
-	}
+    public String doCancel() {
+        return Pages.AKTION_LIST;
+    }
 
 }

@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Named
 public class AktionListController implements Serializable {
 
-	private static final long serialVersionUID = 8693277383648025822L;
+    private static final long serialVersionUID = 8693277383648025822L;
 
     @Inject
     private AktionProducer aktionProducer;
@@ -37,8 +37,8 @@ public class AktionListController implements Serializable {
         return Pages.SPENDE_LIST;
     }
 
-	public void doDeleteAktion(Aktion aktion) {
-		System.out.println("Aktion löschen noch nicht implementiert");
-	}
+    public void doDeleteAktion(Aktion aktion) {
+        System.out.println("Aktion löschen noch nicht implementiert");
+    }
 
 }

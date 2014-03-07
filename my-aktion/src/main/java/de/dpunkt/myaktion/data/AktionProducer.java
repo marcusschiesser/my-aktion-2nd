@@ -3,7 +3,6 @@ package de.dpunkt.myaktion.data;
 import de.dpunkt.myaktion.model.Aktion;
 
 import javax.enterprise.context.SessionScoped;
-import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import java.io.Serializable;
 
