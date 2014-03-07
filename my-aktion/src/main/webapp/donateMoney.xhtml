@@ -10,46 +10,46 @@
 	<h:outputStylesheet name="css/screen.css" />
 	<f:metadata>
 		<f:viewParam id="bgColor" name="bgColor"
-			value="#{geldSpendenController.bgColor}">
+			value="#{donateMoneyController.bgColor}">
 			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
 		</f:viewParam>
 		<f:viewParam id="textColor" name="textColor"
-			value="#{geldSpendenController.textColor}">
+			value="#{donateMoneyController.textColor}">
 			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
 		</f:viewParam>
-		<f:viewParam id="aktionId" name="aktionId" converter="javax.faces.Long"
-			value="#{geldSpendenController.aktionId}">
+		<f:viewParam id="campaignId" name="campaignId" converter="javax.faces.Long"
+			value="#{donateMoneyController.campaignId}">
 		</f:viewParam>
 	</f:metadata>
 </h:head>
 <h:body
-	style="background-color: ##{geldSpendenController.bgColor}; color: ##{geldSpendenController.textColor}">
+	style="background-color: ##{donateMoneyController.bgColor}; color: ##{donateMoneyController.textColor}">
 	<h1>Geld spenden</h1>
 
 	<h:messages globalOnly="true" />
 	<h:message for="bgColor" style="color: red;" />
 	<h:message for="textColor" style="color: red;" />
-	<h:message for="aktionId" style="color: red;" />
+	<h:message for="campaignId" style="color: red;" />
 	<h:form>
 
 		<h:panelGrid columns="3">
 			<h:outputLabel value="Name:"></h:outputLabel>
 			<h:inputText id="name"
-				value="#{geldSpendenController.spende.spenderName}">
+				value="#{donateMoneyController.donation.donorName}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="name" style="color: red;" />
 
 			<h:outputLabel value="IBAN:"></h:outputLabel>
 			<h:inputText id="iban"
-				value="#{geldSpendenController.spende.konto.iban}">
+				value="#{donateMoneyController.donation.account.iban}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="iban" style="color: red;" />
 
 			<h:outputLabel value="Name der Bank:"></h:outputLabel>
 			<h:inputText id="name_bank"
-				value="#{geldSpendenController.spende.konto.nameDerBank}">
+				value="#{donateMoneyController.donation.account.nameOfBank}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="name_bank" style="color: red;" />
@@ -57,7 +57,7 @@
 			<h:outputLabel value="Spendenbetrag:"></h:outputLabel>
 			<h:panelGroup>
 				<h:inputText id="spendenbetrag"
-					value="#{geldSpendenController.spende.betrag}">
+					value="#{donateMoneyController.donation.amount}">
 					<f:validateRequired />
 					<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 				</h:inputText> EUR
@@ -67,12 +67,12 @@
 		</h:panelGrid>
 
 		<h:selectBooleanCheckbox
-			value="#{geldSpendenController.spende.quittung}" /> Ja, ich möchte eine Spendenquittung
+			value="#{donateMoneyController.donation.receiptRequested}" /> Ja, ich möchte eine Spendenquittung
 
 		<br />
 
 		<h:commandButton value="Spenden"
-			action="#{geldSpendenController.doSpende}" />
+			action="#{donateMoneyController.doDonation}" />
 	</h:form>
 </h:body>
 </html>

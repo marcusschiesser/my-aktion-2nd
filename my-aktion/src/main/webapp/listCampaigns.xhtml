@@ -8,22 +8,22 @@
 		<h1>Meine Aktionen</h1>
 
 		<h:form>
-			<h:dataTable value="#{aktionListProducer.aktionen}" var="aktion">
+			<h:dataTable value="#{campaignListProducer.campaigns}" var="campaign">
 				<h:column>
 					<h:commandLink value="x"
-						actionListener="#{aktionListController.doDeleteAktion(aktion)}" />
+						actionListener="#{listCampaignsController.doDeleteCampaign(campaign)}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Name" />
 					</f:facet>
-					<h:outputText value="#{aktion.name}" />
+					<h:outputText value="#{campaign.name}" />
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Spendenziel" />
 					</f:facet>
-					<h:outputText value="#{aktion.spendenZiel}">
+					<h:outputText value="#{campaign.targetAmount}">
 						<f:convertNumber type="currency" currencyCode="EUR"/>
 					</h:outputText>
 				</h:column>
@@ -31,25 +31,25 @@
 					<f:facet name="header">
 						<h:outputText value="bisher gespendet" />
 					</f:facet>
-					<h:outputText value="#{aktion.bisherGespendet}">
+					<h:outputText value="#{campaign.amountDonatedSoFar}">
 						<f:convertNumber type="currency" currencyCode="EUR"/>
 					</h:outputText>
 				</h:column>
 				<h:column>
 					<h:commandLink value="Editieren"
-						action="#{aktionListController.doEditAktion(aktion)}" />
+						action="#{listCampaignsController.doEditCampaign(campaign)}" />
 				</h:column>
 				<h:column>
 					<h:commandLink value="Spendenliste"
-						action="#{aktionListController.doListSpende(aktion)}" />
+						action="#{listCampaignsController.doListDonations(campaign)}" />
 				</h:column>
 				<h:column>
 					<h:commandLink value="Formular" 
-						action="#{aktionListController.doEditSpendeForm(aktion)}" />
+						action="#{listCampaignsController.doEditDonationForm(campaign)}" />
 				</h:column>
 			</h:dataTable>
 			<h:commandButton value="Aktion hinzufügen"
-				action="#{aktionListController.doAddAktion}" />
+				action="#{listCampaignsController.doAddCampaign}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

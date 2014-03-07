@@ -13,8 +13,7 @@
 
 				<h:outputLabel value="Hintergrundfarbe:"></h:outputLabel>
 				<h:selectOneMenu id="bgColor" 
-					value="#{spendeFormEditController.bgColor}" 
-					>
+					value="#{editDonationFormController.bgColor}">
 					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
 					<f:selectItem itemLabel="#000000" itemValue="000000" />
 					<f:selectItem itemLabel="#FF0000" itemValue="FF0000" />
@@ -23,7 +22,7 @@
 
 				<h:outputLabel value="Textfarbe:"></h:outputLabel>
 				<h:selectOneMenu id="textColor" 
-					value="#{spendeFormEditController.textColor}"
+					value="#{editDonationFormController.textColor}"
 					 >
 					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
 					<f:selectItem itemLabel="#000000" itemValue="000000" />
@@ -33,10 +32,10 @@
 
 				<h:outputLabel value="URL des Formulars:"></h:outputLabel>
 				<h:inputTextarea id="url" rows="6" cols="30" readonly="true"
-					value="#{spendeFormEditController.url}" />
+					value="#{editDonationFormController.url}" />
 			</h:panelGrid>
 
-			<h:commandButton value="OK" action="#{spendeFormEditController.doOk}" />
+			<h:commandButton value="OK" action="#{editDonationFormController.doOk}" />
 		</h:form>
 	</ui:define>
 </ui:composition>
