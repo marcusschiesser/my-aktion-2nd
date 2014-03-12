@@ -5,7 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Geld spenden</title>
+	<title>#{msg['donateMoney.donate_money']}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<h:outputStylesheet name="css/screen.css" />
 	<f:metadata>
@@ -24,7 +24,7 @@
 </h:head>
 <h:body
 	style="background-color: ##{donateMoneyController.bgColor}; color: ##{donateMoneyController.textColor}">
-	<h1>Geld spenden</h1>
+	<h1>#{msg['donateMoney.donate_money']}</h1>
 
 	<h:messages globalOnly="true" />
 	<h:message for="bgColor" style="color: red;" />
@@ -33,28 +33,28 @@
 	<h:form>
 
 		<h:panelGrid columns="3">
-			<h:outputLabel value="Name:"></h:outputLabel>
+			<h:outputLabel value="#{msg['donateMoney.name']}:"></h:outputLabel>
 			<h:inputText id="name"
 				value="#{donateMoneyController.donation.donorName}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="name" style="color: red;" />
 
-			<h:outputLabel value="IBAN:"></h:outputLabel>
+			<h:outputLabel value="#{msg['donateMoney.iban']}:"></h:outputLabel>
 			<h:inputText id="iban"
 				value="#{donateMoneyController.donation.account.iban}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="iban" style="color: red;" />
 
-			<h:outputLabel value="Name der Bank:"></h:outputLabel>
+			<h:outputLabel value="#{msg['donateMoney.name_of_bank']}:"></h:outputLabel>
 			<h:inputText id="name_bank"
 				value="#{donateMoneyController.donation.account.nameOfBank}">
 				<f:validateRequired />
 			</h:inputText>
 			<h:message for="name_bank" style="color: red;" />
 
-			<h:outputLabel value="Spendenbetrag:"></h:outputLabel>
+			<h:outputLabel value="#{msg['donateMoney.donation_amount']}:"></h:outputLabel>
 			<h:panelGroup>
 				<h:inputText id="spendenbetrag"
 					value="#{donateMoneyController.donation.amount}">
@@ -67,11 +67,10 @@
 		</h:panelGrid>
 
 		<h:selectBooleanCheckbox
-			value="#{donateMoneyController.donation.receiptRequested}" /> Ja, ich möchte eine Spendenquittung
-
+			value="#{donateMoneyController.donation.receiptRequested}" /> #{msg['donateMoney.i_want_a_receipt']}
 		<br />
 
-		<h:commandButton value="Spenden"
+		<h:commandButton value="#{msg['donateMoney.donate']}"
 			action="#{donateMoneyController.doDonation}" />
 	</h:form>
 </h:body>
