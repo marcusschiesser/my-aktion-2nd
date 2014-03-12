@@ -46,7 +46,8 @@
 					<f:facet name="header">
 						<h:outputText value="Status" />
 					</f:facet>
-					<h:outputText value="#{listDonationsController.convertStatus(donation.status)}" />
+					<h:outputText value="#{msg['listDonations.status.TRANSFERRED']}" rendered="#{donation.status == 'TRANSFERRED'}"/>
+                    <h:outputText value="#{msg['listDonations.status.IN_PROCESS']}" rendered="#{donation.status == 'IN_PROCESS'}"/>
 				</h:column>
 			</h:dataTable>
 			<h:commandButton value="OK"

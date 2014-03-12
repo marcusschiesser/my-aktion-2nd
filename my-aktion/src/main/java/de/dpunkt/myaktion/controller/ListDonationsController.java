@@ -15,15 +15,4 @@ public class ListDonationsController implements Serializable {
         return Pages.LIST_CAMPAIGNS;
     }
 
-    public String convertStatus(Status status) {
-        switch (status) {
-            case TRANSFERRED:
-                return "überwiesen";
-            case IN_PROCESS:
-                return "in Bearbeitung";
-            default:
-                return "";
-        }
-    }
-
 }
