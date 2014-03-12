@@ -5,9 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h1>
-			<h:outputText value="#{campaignProducer.addMode ? msg['editCampaign.add_new_campaign'] : msg['editCampaign.edit_campaign']}" />
-		</h1>
+		<h1>#{campaignProducer.addMode ? msg['editCampaign.add_new_campaign'] : msg['editCampaign.edit_campaign']}</h1>
 
 		<h:form>
 			<h:panelGrid columns="3">

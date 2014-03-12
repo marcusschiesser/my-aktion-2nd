@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<h1><h:outputText value="#{msg['listCampaigns.my_campaigns']}" /></h1>
+		<h1>#{msg['listCampaigns.my_campaigns']}</h1>
 
 		<h:form>
 			<h:dataTable value="#{campaignListProducer.campaigns}" var="campaign">
@@ -14,23 +14,17 @@
 						actionListener="#{listCampaignsController.doDeleteCampaign(campaign)}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="#{msg['listCampaigns.name']}" />
-					</f:facet>
+					<f:facet name="header">#{msg['listCampaigns.name']}</f:facet>
 					<h:outputText value="#{campaign.name}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="#{msg['listCampaigns.target_amount']}" />
-					</f:facet>
+					<f:facet name="header">#{msg['listCampaigns.target_amount']}</f:facet>
 					<h:outputText value="#{campaign.targetAmount}">
 						<f:convertNumber type="currency" currencyCode="EUR"/>
 					</h:outputText>
 				</h:column>
 				<h:column>
-					<f:facet name="header">
-						<h:outputText value="#{msg['listCampaigns.donated_so_far']}" />
-					</f:facet>
+					<f:facet name="header">#{msg['listCampaigns.donated_so_far']}</f:facet>
 					<h:outputText value="#{campaign.amountDonatedSoFar}">
 						<f:convertNumber type="currency" currencyCode="EUR"/>
 					</h:outputText>
