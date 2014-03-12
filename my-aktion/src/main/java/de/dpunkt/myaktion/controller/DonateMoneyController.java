@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
 
 @SessionScoped
 @Named
@@ -55,11 +57,12 @@ public class DonateMoneyController implements Serializable {
     }
 
     public String doDonation() {
-        FacesContext.getCurrentInstance().addMessage(
+        final FacesContext facesContext = FacesContext.getCurrentInstance();
+        final ResourceBundle resourceBundle = facesContext.getApplication().getResourceBundle(facesContext, "msg");
+        final String msg = resourceBundle.getString("donateMoney.thank_you");
+        facesContext.addMessage(
                 null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO,
-                        "Vielen Dank für die Spende, "
-                                + donation.getDonorName() + "!", null));
+                new FacesMessage(FacesMessage.SEVERITY_INFO, msg, null));
         this.donation = new Donation();
         return Pages.DONATE_MONEY;
     }
