@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="content">
-		<h1>#{msg['listDonations.donation_list']} '#{campaignProducer.selectedCampaign.name}'</h1>
-		<h2>#{msg['listDonations.beneficiary_account']}: #{campaignProducer.selectedCampaign.account.name}, #{msg['listDonations.iban']}: #{campaignProducer.selectedCampaign.account.iban}, #{campaignProducer.selectedCampaign.account.nameOfBank}</h2>
+<f:view contracts="#{view.locale.language}" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h1>#{msg['listDonations.donation_list']} '#{campaignProducer.selectedCampaign.name}'</h1>
+            <h2>#{msg['listDonations.beneficiary_account']}: #{campaignProducer.selectedCampaign.account.name}, #{msg['listDonations.iban']}: #{campaignProducer.selectedCampaign.account.iban}, #{campaignProducer.selectedCampaign.account.nameOfBank}</h2>
 
-		<h:form>
-			<h:dataTable value="#{campaignProducer.selectedCampaign.donations}" var="donation">
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.name']}</f:facet>
-					<h:outputText value="#{donation.donorName}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.iban']}</f:facet>
-					<h:outputText value="#{donation.account.iban}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.name_of_bank']}</f:facet>
-					<h:outputText value="#{donation.account.nameOfBank}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.donation_amount']}</f:facet>
-					<h:outputText value="#{donation.amount}">
-						<f:convertNumber type="currency" currencyCode="EUR"/>
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.receipt']}</f:facet>
-					<h:outputText value="#{donation.receiptRequested ? msg['listDonations.yes'] : msg['listDonations.no']}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">#{msg['listDonations.status']}</f:facet>
-					<h:outputText value="#{msg['listDonations.status.TRANSFERRED']}" rendered="#{donation.status == 'TRANSFERRED'}"/>
-                    <h:outputText value="#{msg['listDonations.status.IN_PROCESS']}" rendered="#{donation.status == 'IN_PROCESS'}"/>
-				</h:column>
-			</h:dataTable>
-			<h:commandButton value="OK"
-				action="#{listDonationsController.doOk}" />
-		</h:form>
-	</ui:define>
-</ui:composition>
+            <h:form>
+                <h:dataTable value="#{campaignProducer.selectedCampaign.donations}" var="donation">
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.name']}</f:facet>
+                        <h:outputText value="#{donation.donorName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.iban']}</f:facet>
+                        <h:outputText value="#{donation.account.iban}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.name_of_bank']}</f:facet>
+                        <h:outputText value="#{donation.account.nameOfBank}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.donation_amount']}</f:facet>
+                        <h:outputText value="#{donation.amount}">
+                            <f:convertNumber type="currency" currencyCode="EUR"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.receipt']}</f:facet>
+                        <h:outputText
+                                value="#{donation.receiptRequested ? msg['listDonations.yes'] : msg['listDonations.no']}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{msg['listDonations.status']}</f:facet>
+                        <h:outputText value="#{msg['listDonations.status.TRANSFERRED']}"
+                                      rendered="#{donation.status == 'TRANSFERRED'}"/>
+                        <h:outputText value="#{msg['listDonations.status.IN_PROCESS']}"
+                                      rendered="#{donation.status == 'IN_PROCESS'}"/>
+                    </h:column>
+                </h:dataTable>
+                <h:commandButton value="OK"
+                                 action="#{listDonationsController.doOk}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</f:view>

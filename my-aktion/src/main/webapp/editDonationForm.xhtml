@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="content">
-		<h1>#{msg['editDonationForm.edit_donation_form']}</h1>
+<f:view contracts="#{view.locale.language}" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h1>#{msg['editDonationForm.edit_donation_form']}</h1>
 
-		<h:form>
+            <h:form>
 
-			<h:panelGrid columns="2">
+                <h:panelGrid columns="2">
 
-				<h:outputLabel value="#{msg['editDonationForm.background_color']}:"></h:outputLabel>
-				<h:selectOneMenu id="bgColor" 
-					value="#{editDonationFormController.bgColor}">
-					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
-					<f:selectItem itemLabel="#000000" itemValue="000000" />
-					<f:selectItem itemLabel="#FF0000" itemValue="FF0000" />
-					<f:ajax render="url"/>
-				</h:selectOneMenu>
+                    <h:outputLabel value="#{msg['editDonationForm.background_color']}:"></h:outputLabel>
+                    <h:selectOneMenu id="bgColor"
+                                     value="#{editDonationFormController.bgColor}">
+                        <f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF"/>
+                        <f:selectItem itemLabel="#000000" itemValue="000000"/>
+                        <f:selectItem itemLabel="#FF0000" itemValue="FF0000"/>
+                        <f:ajax render="url"/>
+                    </h:selectOneMenu>
 
-				<h:outputLabel value="#{msg['editDonationForm.text_color']}:"></h:outputLabel>
-				<h:selectOneMenu id="textColor" 
-					value="#{editDonationFormController.textColor}"
-					 >
-					<f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF" />
-					<f:selectItem itemLabel="#000000" itemValue="000000" />
-					<f:selectItem itemLabel="#FF0000" itemValue="FF0000" />
-					<f:ajax render="url"/>
-				</h:selectOneMenu>
+                    <h:outputLabel value="#{msg['editDonationForm.text_color']}:"></h:outputLabel>
+                    <h:selectOneMenu id="textColor"
+                                     value="#{editDonationFormController.textColor}"
+                            >
+                        <f:selectItem itemLabel="#FFFFFF" itemValue="FFFFFF"/>
+                        <f:selectItem itemLabel="#000000" itemValue="000000"/>
+                        <f:selectItem itemLabel="#FF0000" itemValue="FF0000"/>
+                        <f:ajax render="url"/>
+                    </h:selectOneMenu>
 
-				<h:outputLabel value="#{msg['editDonationForm.form_url']}:"></h:outputLabel>
-				<h:inputTextarea id="url" rows="6" cols="30" readonly="true"
-					value="#{editDonationFormController.url}" />
-			</h:panelGrid>
+                    <h:outputLabel value="#{msg['editDonationForm.form_url']}:"></h:outputLabel>
+                    <h:inputTextarea id="url" rows="6" cols="30" readonly="true"
+                                     value="#{editDonationFormController.url}"/>
+                </h:panelGrid>
 
-			<h:commandButton value="OK" action="#{editDonationFormController.doOk}" />
-		</h:form>
-	</ui:define>
-</ui:composition>
+                <h:commandButton value="OK" action="#{editDonationFormController.doOk}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</f:view>

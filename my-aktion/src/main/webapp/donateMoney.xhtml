@@ -7,7 +7,6 @@
 <h:head>
 	<title>#{msg['donateMoney.donate_money']}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<h:outputStylesheet name="css/screen.css" />
 	<f:metadata>
 		<f:viewParam id="bgColor" name="bgColor"
 			value="#{donateMoneyController.bgColor}">
@@ -23,7 +22,8 @@
 	</f:metadata>
 </h:head>
 <h:body
-	style="background-color: ##{donateMoneyController.bgColor}; color: ##{donateMoneyController.textColor}">
+	style="margin:0; font-family: Verdana, sans-serif; font-size: 0.9em;
+	background-color: ##{donateMoneyController.bgColor}; color: ##{donateMoneyController.textColor}">
 	<h1>#{msg['donateMoney.donate_money']}</h1>
 
 	<h:messages globalOnly="true" />
