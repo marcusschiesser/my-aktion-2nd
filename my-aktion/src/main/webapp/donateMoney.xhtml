@@ -1,77 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>#{msg['donateMoney.donate_money']}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<f:metadata>
-		<f:viewParam id="bgColor" name="bgColor"
-			value="#{donateMoneyController.bgColor}">
-			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
-		</f:viewParam>
-		<f:viewParam id="textColor" name="textColor"
-			value="#{donateMoneyController.textColor}">
-			<f:validateRegex pattern="[A-Fa-f0-9]{6}" />
-		</f:viewParam>
-		<f:viewParam id="campaignId" name="campaignId" converter="javax.faces.Long"
-			value="#{donateMoneyController.campaignId}">
-		</f:viewParam>
-	</f:metadata>
+    <title>#{msg['donateMoney.donate_money']}</title>
+    <meta charset="utf-8"/>
+    <f:metadata>
+        <f:viewParam id="bgColor" name="bgColor"
+                     value="#{donateMoneyController.bgColor}">
+            <f:validateRegex pattern="[A-Fa-f0-9]{6}"/>
+        </f:viewParam>
+        <f:viewParam id="textColor" name="textColor"
+                     value="#{donateMoneyController.textColor}">
+            <f:validateRegex pattern="[A-Fa-f0-9]{6}"/>
+        </f:viewParam>
+        <f:viewParam id="campaignId" name="campaignId" converter="javax.faces.Long"
+                     value="#{donateMoneyController.campaignId}">
+        </f:viewParam>
+    </f:metadata>
 </h:head>
 <h:body
-	style="margin:0; font-family: Verdana, sans-serif; font-size: 0.9em;
+        style="margin:0; font-family: Verdana, sans-serif; font-size: 0.9em;
 	background-color: ##{donateMoneyController.bgColor}; color: ##{donateMoneyController.textColor}">
-	<h1>#{msg['donateMoney.donate_money']}</h1>
+    <h1>#{msg['donateMoney.donate_money']}</h1>
 
-	<h:messages globalOnly="true" />
-	<h:message for="bgColor" style="color: red;" />
-	<h:message for="textColor" style="color: red;" />
-	<h:message for="campaignId" style="color: red;" />
-	<h:form>
+    <h:messages globalOnly="true"/>
+    <h:message for="bgColor" style="color: red;"/>
+    <h:message for="textColor" style="color: red;"/>
+    <h:message for="campaignId" style="color: red;"/>
+    <h:form>
 
-		<h:panelGrid columns="3">
-			<h:outputLabel value="#{msg['donateMoney.name']}:"></h:outputLabel>
-			<h:inputText id="name"
-				value="#{donateMoneyController.donation.donorName}">
-				<f:validateRequired />
-			</h:inputText>
-			<h:message for="name" style="color: red;" />
+        <h:panelGrid columns="3">
+            <h:outputLabel value="#{msg['donateMoney.name']}:"></h:outputLabel>
+            <h:inputText id="name"
+                         value="#{donateMoneyController.donation.donorName}">
+                <f:validateRequired/>
+            </h:inputText>
+            <h:message for="name" style="color: red;"/>
 
-			<h:outputLabel value="#{msg['donateMoney.iban']}:"></h:outputLabel>
-			<h:inputText id="iban"
-				value="#{donateMoneyController.donation.account.iban}">
-				<f:validateRequired />
-			</h:inputText>
-			<h:message for="iban" style="color: red;" />
+            <h:outputLabel value="#{msg['donateMoney.iban']}:"></h:outputLabel>
+            <h:inputText id="iban"
+                         value="#{donateMoneyController.donation.account.iban}">
+                <f:validateRequired/>
+            </h:inputText>
+            <h:message for="iban" style="color: red;"/>
 
-			<h:outputLabel value="#{msg['donateMoney.name_of_bank']}:"></h:outputLabel>
-			<h:inputText id="name_bank"
-				value="#{donateMoneyController.donation.account.nameOfBank}">
-				<f:validateRequired />
-			</h:inputText>
-			<h:message for="name_bank" style="color: red;" />
+            <h:outputLabel value="#{msg['donateMoney.name_of_bank']}:"></h:outputLabel>
+            <h:inputText id="name_bank"
+                         value="#{donateMoneyController.donation.account.nameOfBank}">
+                <f:validateRequired/>
+            </h:inputText>
+            <h:message for="name_bank" style="color: red;"/>
 
-			<h:outputLabel value="#{msg['donateMoney.donation_amount']}:"></h:outputLabel>
-			<h:panelGroup>
-				<h:inputText id="spendenbetrag"
-					value="#{donateMoneyController.donation.amount}">
-					<f:validateRequired />
-					<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-				</h:inputText> EUR
-			</h:panelGroup>
-			<h:message for="spendenbetrag" style="color: red;" />
+            <h:outputLabel value="#{msg['donateMoney.donation_amount']}:"></h:outputLabel>
+            <h:panelGroup>
+                <h:inputText id="spendenbetrag"
+                             value="#{donateMoneyController.donation.amount}">
+                    <f:validateRequired/>
+                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                </h:inputText> EUR
+            </h:panelGroup>
+            <h:message for="spendenbetrag" style="color: red;"/>
 
-		</h:panelGrid>
+        </h:panelGrid>
 
-		<h:selectBooleanCheckbox
-			value="#{donateMoneyController.donation.receiptRequested}" /> #{msg['donateMoney.i_want_a_receipt']}
-		<br />
+        <h:selectBooleanCheckbox
+                value="#{donateMoneyController.donation.receiptRequested}"/> #{msg['donateMoney.i_want_a_receipt']}
+        <br/>
 
-		<h:commandButton value="#{msg['donateMoney.donate']}"
-			action="#{donateMoneyController.doDonation}" />
-	</h:form>
+        <h:commandButton value="#{msg['donateMoney.donate']}"
+                         action="#{donateMoneyController.doDonation}"/>
+    </h:form>
 </h:body>
 </html>

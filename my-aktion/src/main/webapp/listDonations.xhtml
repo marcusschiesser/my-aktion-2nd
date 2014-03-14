@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<f:view contracts="#{view.locale.language}" xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:h="http://java.sun.com/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<body>
+<f:view contracts="#{view.locale.language}">
     <ui:composition template="/template.xhtml">
         <ui:define name="content">
             <h1>#{msg['listDonations.donation_list']} '#{campaignProducer.selectedCampaign.name}'</h1>
+
             <h2>#{msg['listDonations.beneficiary_account']}: #{campaignProducer.selectedCampaign.account.name}, #{msg['listDonations.iban']}: #{campaignProducer.selectedCampaign.account.iban}, #{campaignProducer.selectedCampaign.account.nameOfBank}</h2>
 
             <h:form>
@@ -47,3 +49,5 @@
         </ui:define>
     </ui:composition>
 </f:view>
+</body>
+</html>
