@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 <body>
 <f:view contracts="#{view.locale.language}">
@@ -9,69 +10,75 @@
             <h1>#{campaignProducer.addMode ? msg['editCampaign.add_new_campaign'] : msg['editCampaign.edit_campaign']}</h1>
 
             <h:form>
-                <h:panelGrid columns="3">
-                    <f:facet name="header">#{msg['editCampaign.general']}</f:facet>
+                <p:tabView id="tabView">
+                    <p:tab title="#{msg['editCampaign.general']}">
 
-                    <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
-                    <h:inputText id="a_name" value="#{campaignProducer.selectedCampaign.name}"
-                                 validatorMessage="#{msg['editCampaign.campaign_name_validation']}">
-                        <f:passThroughAttribute name="placeholder" value="#{msg['editCampaign.name_of_the_campaign']}"/>
-                        <f:validateRequired/>
-                        <f:validateLength minimum="4" maximum="30"/>
-                    </h:inputText>
-                    <h:message for="a_name" style="color: red;"/>
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
+                            <p:inputText id="a_name" value="#{campaignProducer.selectedCampaign.name}"
+                                         validatorMessage="#{msg['editCampaign.campaign_name_validation']}">
+                                <f:passThroughAttribute name="placeholder"
+                                                        value="#{msg['editCampaign.name_of_the_campaign']}"/>
+                                <f:validateRequired/>
+                                <f:validateLength minimum="4" maximum="30"/>
+                            </p:inputText>
+                            <p:message for="a_name"/>
 
-                    <h:outputLabel value="#{msg['editCampaign.target_amount']}:"></h:outputLabel>
-                    <h:panelGroup>
-                        <h:inputText id="a_targetAmount"
-                                     value="#{campaignProducer.selectedCampaign.targetAmount}"
-                                     validatorMessage="#{msg['editCampaign.target_amount_validation']}">
-                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
-                            <f:validateRequired/>
-                            <f:validateDoubleRange minimum="10.0"/>
-                        </h:inputText> EUR
-                    </h:panelGroup>
-                    <h:message for="a_targetAmount" style="color: red;"/>
+                            <h:outputLabel value="#{msg['editCampaign.target_amount']}:"></h:outputLabel>
+                            <h:panelGroup>
+                                <p:inputText id="a_targetAmount"
+                                             value="#{campaignProducer.selectedCampaign.targetAmount}"
+                                             validatorMessage="#{msg['editCampaign.target_amount_validation']}">
+                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                                    <f:validateRequired/>
+                                    <f:validateDoubleRange minimum="10.0"/>
+                                </p:inputText> EUR
+                            </h:panelGroup>
+                            <p:message for="a_targetAmount"/>
 
-                    <h:outputLabel value="#{msg['editCampaign.donation_amount']}:"></h:outputLabel>
-                    <h:panelGroup>
-                        <h:inputText id="a_donationMinimum"
-                                     value="#{campaignProducer.selectedCampaign.donationMinimum}"
-                                     validatorMessage="#{msg['editCampaign.donation_amount_validation']}">
-                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
-                            <f:validateRequired/>
-                            <f:validateDoubleRange minimum="1.0"/>
-                        </h:inputText> EUR
-                    </h:panelGroup>
-                    <h:message for="a_donationMinimum" style="color: red;"/>
-                </h:panelGrid>
-                <h:panelGrid columns="3">
-                    <f:facet name="header">#{msg['editCampaign.bank_account']}</f:facet>
+                            <h:outputLabel value="#{msg['editCampaign.donation_amount']}:"></h:outputLabel>
+                            <h:panelGroup>
+                                <p:inputText id="a_donationMinimum"
+                                             value="#{campaignProducer.selectedCampaign.donationMinimum}"
+                                             validatorMessage="#{msg['editCampaign.donation_amount_validation']}">
+                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                                    <f:validateRequired/>
+                                    <f:validateDoubleRange minimum="1.0"/>
+                                </p:inputText> EUR
+                            </h:panelGroup>
+                            <p:message for="a_donationMinimum"/>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="#{msg['editCampaign.bank_account']}">
 
-                    <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
-                    <h:inputText id="b_name"
-                                 value="#{campaignProducer.selectedCampaign.account.name}">
-                        <f:validateRequired/>
-                    </h:inputText>
-                    <h:message for="b_name" style="color: red;"/>
+                        <h:panelGrid columns="3">
 
-                    <h:outputLabel value="#{msg['editCampaign.iban']}:"></h:outputLabel>
-                    <h:inputText id="b_iban"
-                                 value="#{campaignProducer.selectedCampaign.account.iban}">
-                        <f:validateRequired/>
-                    </h:inputText>
-                    <h:message for="b_iban" style="color: red;"/>
+                            <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
+                            <p:inputText id="b_name"
+                                         value="#{campaignProducer.selectedCampaign.account.name}">
+                                <f:validateRequired/>
+                            </p:inputText>
+                            <p:message for="b_name"/>
 
-                    <h:outputLabel value="#{msg['editCampaign.name_of_bank']}:"></h:outputLabel>
-                    <h:inputText id="b_name_bank"
-                                 value="#{campaignProducer.selectedCampaign.account.nameOfBank}">
-                        <f:validateRequired/>
-                    </h:inputText>
-                    <h:message for="b_name_bank" style="color: red;"/>
-                </h:panelGrid>
-                <h:commandButton value="#{msg['editCampaign.save']}"
+                            <h:outputLabel value="#{msg['editCampaign.iban']}:"></h:outputLabel>
+                            <p:inputText id="b_iban"
+                                         value="#{campaignProducer.selectedCampaign.account.iban}">
+                                <f:validateRequired/>
+                            </p:inputText>
+                            <p:message for="b_iban"/>
+
+                            <h:outputLabel value="#{msg['editCampaign.name_of_bank']}:"></h:outputLabel>
+                            <p:inputText id="b_name_bank"
+                                         value="#{campaignProducer.selectedCampaign.account.nameOfBank}">
+                                <f:validateRequired/>
+                            </p:inputText>
+                            <p:message for="b_name_bank"/>
+                        </h:panelGrid>
+                    </p:tab>
+                </p:tabView>
+                <p:commandButton value="#{msg['editCampaign.save']}" ajax="false"
                                  action="#{editCampaignController.doSave}"/>
-                <h:commandButton value="#{msg['editCampaign.cancel']}" immediate="true"
+                <p:commandButton value="#{msg['editCampaign.cancel']}" immediate="true" ajax="false"
                                  action="#{editCampaignController.doCancel}"/>
             </h:form>
         </ui:define>
