@@ -45,12 +45,12 @@
                                        action="#{listCampaignsController.doEditDonationForm(campaign)}"/>
                     </p:column>
                 </p:dataTable>
-                <p:commandButton value="#{msg['listCampaigns.add_campaign']}"
+                <p:commandButton value="#{msg['listCampaigns.add_campaign']}" ajax="false"
                                  action="#{listCampaignsController.doAddCampaign}"/>
                 <p:confirmDialog message="#{msg['listCampaigns.ask_delete_campaign']}"
                                  header="#{msg['listCampaigns.delete_campaign']}" severity="alert"
                                  widgetVar="confirmation">
-                    <p:commandButton value="#{msg['listCampaigns.yes']}" onclick="confirmation.hide()"
+                    <p:commandButton value="#{msg['listCampaigns.yes']}" oncomplete="confirmation.hide()" ajax="false"
                                      actionListener="#{listCampaignsController.commitDeleteCampaign}"/>
                     <p:commandButton value="#{msg['listCampaigns.no']}" onclick="confirmation.hide()"/>
                 </p:confirmDialog>
