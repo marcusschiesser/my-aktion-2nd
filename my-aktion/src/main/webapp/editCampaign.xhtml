@@ -23,7 +23,7 @@
 
                     <h:outputLabel value="#{msg['editCampaign.target_amount']}:"></h:outputLabel>
                     <h:panelGroup>
-                        <h:inputText id="a_spendenziel"
+                        <h:inputText id="a_targetAmount"
                                      value="#{campaignProducer.selectedCampaign.targetAmount}"
                                      validatorMessage="#{msg['editCampaign.target_amount_validation']}">
                             <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
@@ -31,11 +31,11 @@
                             <f:validateDoubleRange minimum="10.0"/>
                         </h:inputText> EUR
                     </h:panelGroup>
-                    <h:message for="a_spendenziel" style="color: red;"/>
+                    <h:message for="a_targetAmount" style="color: red;"/>
 
                     <h:outputLabel value="#{msg['editCampaign.donation_amount']}:"></h:outputLabel>
                     <h:panelGroup>
-                        <h:inputText id="a_spendenbetrag"
+                        <h:inputText id="a_donationMinimum"
                                      value="#{campaignProducer.selectedCampaign.donationMinimum}"
                                      validatorMessage="#{msg['editCampaign.donation_amount_validation']}">
                             <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
@@ -43,7 +43,7 @@
                             <f:validateDoubleRange minimum="1.0"/>
                         </h:inputText> EUR
                     </h:panelGroup>
-                    <h:message for="a_spendenbetrag" style="color: red;"/>
+                    <h:message for="a_donationMinimum" style="color: red;"/>
                 </h:panelGrid>
                 <h:panelGrid columns="3">
                     <f:facet name="header">#{msg['editCampaign.bank_account']}</f:facet>
@@ -56,11 +56,11 @@
                     <h:message for="b_name" style="color: red;"/>
 
                     <h:outputLabel value="#{msg['editCampaign.iban']}:"></h:outputLabel>
-                    <h:inputText id="b_konto"
+                    <h:inputText id="b_iban"
                                  value="#{campaignProducer.selectedCampaign.account.iban}">
                         <f:validateRequired/>
                     </h:inputText>
-                    <h:message for="b_konto" style="color: red;"/>
+                    <h:message for="b_iban" style="color: red;"/>
 
                     <h:outputLabel value="#{msg['editCampaign.name_of_bank']}:"></h:outputLabel>
                     <h:inputText id="b_name_bank"
