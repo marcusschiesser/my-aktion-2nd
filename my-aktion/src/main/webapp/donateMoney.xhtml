@@ -54,13 +54,13 @@
 
             <h:outputLabel value="#{msg['donateMoney.donation_amount']}:"></h:outputLabel>
             <h:panelGroup>
-                <h:inputText id="spendenbetrag"
+                <h:inputText id="donationAmount"
                              value="#{donateMoneyController.donation.amount}">
                     <f:validateRequired/>
                     <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                 </h:inputText> EUR
             </h:panelGroup>
-            <h:message for="spendenbetrag" style="color: red;"/>
+            <h:message for="donationAmount" style="color: red;"/>
 
         </h:panelGrid>
 
