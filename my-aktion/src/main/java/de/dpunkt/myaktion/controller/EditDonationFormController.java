@@ -20,16 +20,14 @@ public class EditDonationFormController implements Serializable {
 
     @Inject
     private CampaignProducer campaignProducer;
+    @Inject
+    private HttpServletRequest req;
 
     public String doOk() {
         return Pages.LIST_CAMPAIGNS;
     }
 
     private String getAppUrl() {
-        HttpServletRequest req =
-                (HttpServletRequest) FacesContext.getCurrentInstance()
-                        .getExternalContext().getRequest();
-
         String scheme = req.getScheme();
         String serverName = req.getServerName();
         int serverPort = req.getServerPort();

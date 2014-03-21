@@ -7,13 +7,13 @@ import de.dpunkt.myaktion.model.Donation.Status;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 @SessionScoped
-@Named
 public class CampaignListProducer implements Serializable {
 
     private static final long serialVersionUID = -182866064791747156L;
@@ -24,6 +24,8 @@ public class CampaignListProducer implements Serializable {
         campaigns = createMockCampaigns();
     }
 
+    @Produces
+    @Named
     public List<Campaign> getCampaigns() {
         return campaigns;
     }

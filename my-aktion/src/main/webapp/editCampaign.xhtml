@@ -7,16 +7,16 @@
 <f:view contracts="#{view.locale.language}">
     <ui:composition template="/template.xhtml">
         <ui:define name="content">
-            <h1>#{campaignProducer.addMode ? msg['editCampaign.add_new_campaign'] : msg['editCampaign.edit_campaign']}</h1>
+            <h1>#{addMode ? msg['editCampaign.add_new_campaign'] : msg['editCampaign.edit_campaign']}</h1>
 
             <h:form>
-                <p:messages closable="true" />
+                <p:messages closable="true"/>
                 <p:tabView id="tabView">
                     <p:tab title="#{msg['editCampaign.general']}">
 
                         <h:panelGrid columns="3">
                             <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
-                            <p:inputText id="a_name" value="#{campaignProducer.selectedCampaign.name}"
+                            <p:inputText id="a_name" value="#{selectedCampaign.name}"
                                          validatorMessage="#{msg['editCampaign.campaign_name_validation']}">
                                 <f:passThroughAttribute name="placeholder"
                                                         value="#{msg['editCampaign.name_of_the_campaign']}"/>
@@ -28,7 +28,7 @@
                             <h:outputLabel value="#{msg['editCampaign.target_amount']}:"></h:outputLabel>
                             <h:panelGroup>
                                 <p:inputText id="a_targetAmount"
-                                             value="#{campaignProducer.selectedCampaign.targetAmount}"
+                                             value="#{selectedCampaign.targetAmount}"
                                              validatorMessage="#{msg['editCampaign.target_amount_validation']}">
                                     <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                                     <f:validateRequired/>
@@ -40,7 +40,7 @@
                             <h:outputLabel value="#{msg['editCampaign.donation_amount']}:"></h:outputLabel>
                             <h:panelGroup>
                                 <p:inputText id="a_donationMinimum"
-                                             value="#{campaignProducer.selectedCampaign.donationMinimum}"
+                                             value="#{selectedCampaign.donationMinimum}"
                                              validatorMessage="#{msg['editCampaign.donation_amount_validation']}">
                                     <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                                     <f:validateRequired/>
@@ -56,21 +56,21 @@
 
                             <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
                             <p:inputText id="b_name"
-                                         value="#{campaignProducer.selectedCampaign.account.name}">
+                                         value="#{selectedCampaign.account.name}">
                                 <f:validateRequired/>
                             </p:inputText>
                             <p:message for="b_name"/>
 
                             <h:outputLabel value="#{msg['editCampaign.iban']}:"></h:outputLabel>
                             <p:inputText id="b_iban"
-                                         value="#{campaignProducer.selectedCampaign.account.iban}">
+                                         value="#{selectedCampaign.account.iban}">
                                 <f:validateRequired/>
                             </p:inputText>
                             <p:message for="b_iban"/>
 
                             <h:outputLabel value="#{msg['editCampaign.name_of_bank']}:"></h:outputLabel>
                             <p:inputText id="b_name_bank"
-                                         value="#{campaignProducer.selectedCampaign.account.nameOfBank}">
+                                         value="#{selectedCampaign.account.nameOfBank}">
                                 <f:validateRequired/>
                             </p:inputText>
                             <p:message for="b_name_bank"/>

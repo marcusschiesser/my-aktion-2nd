@@ -7,12 +7,12 @@
 <f:view contracts="#{view.locale.language}">
     <ui:composition template="/template.xhtml">
         <ui:define name="content">
-            <h1>#{msg['listDonations.donation_list']} '#{campaignProducer.selectedCampaign.name}'</h1>
+            <h1>#{msg['listDonations.donation_list']} '#{selectedCampaign.name}'</h1>
 
-            <h2>#{msg['listDonations.beneficiary_account']}: #{campaignProducer.selectedCampaign.account.name}, #{msg['listDonations.iban']}: #{campaignProducer.selectedCampaign.account.iban}, #{campaignProducer.selectedCampaign.account.nameOfBank}</h2>
+            <h2>#{msg['listDonations.beneficiary_account']}: #{selectedCampaign.account.name}, #{msg['listDonations.iban']}: #{selectedCampaign.account.iban}, #{selectedCampaign.account.nameOfBank}</h2>
 
             <h:form>
-                <p:dataTable value="#{campaignProducer.selectedCampaign.donations}" var="donation">
+                <p:dataTable value="#{selectedCampaign.donations}" var="donation">
                     <p:column>
                         <f:facet name="header">#{msg['listDonations.name']}</f:facet>
                         <h:outputText value="#{donation.donorName}"/>

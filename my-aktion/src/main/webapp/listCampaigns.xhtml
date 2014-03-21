@@ -10,7 +10,7 @@
             <h1>#{msg['listCampaigns.my_campaigns']}</h1>
 
             <h:form>
-                <p:dataTable value="#{campaignListProducer.campaigns}" var="campaign">
+                <p:dataTable value="#{campaigns}" var="campaign">
                     <p:column>
                         <p:commandButton onclick="confirmation.show()"
                                          actionListener="#{listCampaignsController.doDeleteCampaign(campaign)}"
