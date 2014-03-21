@@ -3,12 +3,12 @@ package de.dpunkt.myaktion.controller;
 import de.dpunkt.myaktion.data.CampaignListProducer;
 import de.dpunkt.myaktion.data.CampaignProducer;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
-@SessionScoped
+@ViewScoped
 @Named
 public class EditCampaignController implements Serializable {
     private static final long serialVersionUID = 2815796004558360299L;

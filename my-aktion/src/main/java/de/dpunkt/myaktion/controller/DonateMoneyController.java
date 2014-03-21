@@ -2,15 +2,14 @@ package de.dpunkt.myaktion.controller;
 
 import de.dpunkt.myaktion.model.Donation;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
-@SessionScoped
+@ViewScoped
 @Named
 public class DonateMoneyController implements Serializable {
     private static final long serialVersionUID = 5493038842003809106L;
