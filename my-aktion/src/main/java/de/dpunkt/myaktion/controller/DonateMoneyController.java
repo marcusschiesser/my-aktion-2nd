@@ -2,6 +2,7 @@ package de.dpunkt.myaktion.controller;
 
 import de.dpunkt.myaktion.model.Donation;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -19,7 +20,8 @@ public class DonateMoneyController implements Serializable {
     private Long campaignId;
     private Donation donation;
 
-    public DonateMoneyController() {
+    @PostConstruct
+    public void init() {
         this.donation = new Donation();
     }
 
@@ -62,7 +64,7 @@ public class DonateMoneyController implements Serializable {
         facesContext.addMessage(
                 null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO, msg, null));
-        this.donation = new Donation();
+        init();
         return Pages.DONATE_MONEY;
     }
 

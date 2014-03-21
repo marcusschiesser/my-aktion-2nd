@@ -5,6 +5,7 @@ import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.model.Donation.Status;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -18,7 +19,8 @@ public class CampaignListProducer implements Serializable {
     private static final long serialVersionUID = -182866064791747156L;
     private List<Campaign> campaigns;
 
-    public CampaignListProducer() {
+    @PostConstruct
+    public void init() {
         campaigns = createMockCampaigns();
     }
 
