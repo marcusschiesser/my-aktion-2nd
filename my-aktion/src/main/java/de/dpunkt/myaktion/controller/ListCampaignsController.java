@@ -2,7 +2,9 @@ package de.dpunkt.myaktion.controller;
 
 import de.dpunkt.myaktion.data.CampaignProducer;
 import de.dpunkt.myaktion.model.Campaign;
+import de.dpunkt.myaktion.util.Events.Deleted;
 
+import javax.enterprise.event.Event;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,6 +18,10 @@ public class ListCampaignsController implements Serializable {
 
     @Inject
     private CampaignProducer campaignProducer;
+
+    @Inject
+    @Deleted
+    private Event<Campaign> campaignDeleteEvent;
 
     private Campaign campaignToDelete;
 
@@ -41,11 +47,10 @@ public class ListCampaignsController implements Serializable {
 
     public void doDeleteCampaign(Campaign campaign) {
         this.campaignToDelete = campaign;
-        System.out.println("Aktion zum löschen vorgemerkt");
     }
 
     public void commitDeleteCampaign() {
-        System.out.println("Aktion löschen noch nicht implementiert");
+        campaignDeleteEvent.fire(campaignToDelete);
     }
 
 }
