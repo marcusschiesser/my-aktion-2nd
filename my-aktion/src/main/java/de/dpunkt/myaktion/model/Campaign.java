@@ -8,7 +8,7 @@ public class Campaign {
     private Double donationMinimum;
     private Double amountDonatedSoFar;
     private Account account;
-    private Long campaignId;
+    private Long id;
     private List<Donation> donations;
 
     public Campaign() {
@@ -55,12 +55,12 @@ public class Campaign {
         this.account = account;
     }
 
-    public void setId(Long campaignId) {
-        this.campaignId = campaignId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
-        return campaignId;
+        return id;
     }
 
     public List<Donation> getDonations() {
