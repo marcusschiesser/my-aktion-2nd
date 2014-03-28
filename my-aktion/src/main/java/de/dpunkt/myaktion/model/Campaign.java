@@ -3,8 +3,12 @@ package de.dpunkt.myaktion.model;
 import javax.persistence.*;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = Campaign.findAll, query = "SELECT a FROM Campaign a ORDER BY a.name")
+})
 @Entity
 public class Campaign {
+    public static final String findAll = "Campaign.findAll";
     private String name;
     private Double targetAmount;
     private Double donationMinimum;
