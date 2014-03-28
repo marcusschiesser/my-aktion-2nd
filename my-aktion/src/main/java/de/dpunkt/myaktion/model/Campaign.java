@@ -1,14 +1,21 @@
 package de.dpunkt.myaktion.model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Campaign {
     private String name;
     private Double targetAmount;
     private Double donationMinimum;
     private Double amountDonatedSoFar;
+    @AttributeOverrides({@AttributeOverride(name = "name", column = @Column(name = "accountName"))})
+    @Embedded
     private Account account;
+    @GeneratedValue
+    @Id
     private Long id;
+    @OneToMany(mappedBy = "campaign")
     private List<Donation> donations;
 
     public Campaign() {
