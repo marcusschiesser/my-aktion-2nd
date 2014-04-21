@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = Campaign.findAll, query = "SELECT a FROM Campaign a ORDER BY a.name")
+        @NamedQuery(name = Campaign.findAll, query = "SELECT a FROM Campaign a ORDER BY a.name"),
+        @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign")
 })
 @Entity
 public class Campaign {
     public static final String findAll = "Campaign.findAll";
+    public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";
     private String name;
     private Double targetAmount;
     private Double donationMinimum;
