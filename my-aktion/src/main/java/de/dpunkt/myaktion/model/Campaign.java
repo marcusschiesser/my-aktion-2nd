@@ -37,7 +37,7 @@ public class Campaign {
     @Id
     private Long id;
 
-    @OneToMany(mappedBy = "campaign")
+    @OneToMany(mappedBy = "campaign", cascade = CascadeType.REMOVE)
     private List<Donation> donations;
 
     public Campaign() {
