@@ -35,21 +35,18 @@
             <h:outputLabel value="#{msg['donateMoney.name']}:"></h:outputLabel>
             <p:inputText id="name"
                          value="#{donateMoneyController.donation.donorName}">
-                <f:validateRequired/>
             </p:inputText>
             <p:message for="name"/>
 
             <h:outputLabel value="#{msg['donateMoney.iban']}:"></h:outputLabel>
             <p:inputText id="iban"
                          value="#{donateMoneyController.donation.account.iban}">
-                <f:validateRequired/>
             </p:inputText>
             <p:message for="iban"/>
 
             <h:outputLabel value="#{msg['donateMoney.name_of_bank']}:"></h:outputLabel>
             <p:inputText id="name_bank"
                          value="#{donateMoneyController.donation.account.nameOfBank}">
-                <f:validateRequired/>
             </p:inputText>
             <p:message for="name_bank"/>
 
@@ -57,7 +54,6 @@
             <h:panelGroup>
                 <p:inputText id="donationAmount"
                              value="#{donateMoneyController.donation.amount}">
-                    <f:validateRequired/>
                     <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                 </p:inputText> EUR
             </h:panelGroup>
