@@ -1,17 +1,35 @@
 package de.dpunkt.myaktion.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Donation {
+
+    @NotNull(message = "{donation.amount.notNull}")
+    @DecimalMin(value = "1.00", message = "{donation.amount.decimalMin}")
     private Double amount;
+
+    @NotNull
+    @Size(min = 5, max = 40, message = "{donation.donorName.size}")
     private String donorName;
+
+    @NotNull
     private Boolean receiptRequested;
+
+    @NotNull
     private Status status;
+
+    @NotNull
     @Embedded
     private Account account;
+
+    @NotNull
     @ManyToOne
     private Campaign campaign;
+
     @GeneratedValue
     @Id
     private Long id;

@@ -1,6 +1,9 @@
 package de.dpunkt.myaktion.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @NamedQueries({
@@ -11,16 +14,29 @@ import java.util.List;
 public class Campaign {
     public static final String findAll = "Campaign.findAll";
     public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";
+
+    @NotNull
+    @Size(min = 4, max = 30, message = "{campaign.name.size}")
     private String name;
+
+    @NotNull(message = "{campaign.targetAmount.notNull}")
+    @DecimalMin(value = "10.00", message = "{campaign.targetAmount.decimalMin}")
     private Double targetAmount;
+
+    @NotNull(message = "{campaign.donationMinimum.notNull}")
+    @DecimalMin(value = "1.00", message = "{campaign.donationMinimum.decimalMin}")
     private Double donationMinimum;
+
     private Double amountDonatedSoFar;
+
     @AttributeOverrides({@AttributeOverride(name = "name", column = @Column(name = "accountName"))})
     @Embedded
     private Account account;
+
     @GeneratedValue
     @Id
     private Long id;
+
     @OneToMany(mappedBy = "campaign")
     private List<Donation> donations;
 
