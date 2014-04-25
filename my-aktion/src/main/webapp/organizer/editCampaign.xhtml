@@ -17,7 +17,7 @@
                         <h:panelGrid columns="3">
                             <h:outputLabel value="#{msg['editCampaign.name']}:"></h:outputLabel>
                             <p:inputText id="a_name" value="#{selectedCampaign.name}">
-                            <f:passThroughAttribute name="placeholder"
+                                <f:passThroughAttribute name="placeholder"
                                                         value="#{msg['editCampaign.name_of_the_campaign']}"/>
                             </p:inputText>
                             <p:message for="a_name"/>
@@ -26,7 +26,7 @@
                             <h:panelGroup>
                                 <p:inputText id="a_targetAmount"
                                              value="#{selectedCampaign.targetAmount}">
-                                <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                                 </p:inputText> EUR
                             </h:panelGroup>
                             <p:message for="a_targetAmount"/>
@@ -35,7 +35,7 @@
                             <h:panelGroup>
                                 <p:inputText id="a_donationMinimum"
                                              value="#{selectedCampaign.donationMinimum}">
-                                <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
+                                    <f:convertNumber maxFractionDigits="2" minFractionDigits="2"/>
                                 </p:inputText> EUR
                             </h:panelGroup>
                             <p:message for="a_donationMinimum"/>
