@@ -1,11 +1,13 @@
 package de.dpunkt.myaktion.test.pages;
 
 import de.dpunkt.myaktion.model.Campaign;
+import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
+@Location("editCampaign.jsf")
 public class EditCampaignPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id,'a_name')]")
     private WebElement campaignName;

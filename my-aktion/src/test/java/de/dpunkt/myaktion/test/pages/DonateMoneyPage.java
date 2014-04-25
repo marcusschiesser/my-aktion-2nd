@@ -1,11 +1,16 @@
 package de.dpunkt.myaktion.test.pages;
 
 import de.dpunkt.myaktion.model.Donation;
+import org.jboss.arquillian.graphene.page.Location;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
+@Location("donateMoney.jsf")
 public class DonateMoneyPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id,'name')]")
     private WebElement name;
@@ -21,10 +26,11 @@ public class DonateMoneyPage extends AbstractPage {
     }
 
     public void setDonation(Donation donation) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.GERMANY);
         name.sendKeys(donation.getDonorName());
         iban.sendKeys(donation.getAccount().getIban());
         nameBank.sendKeys(donation.getAccount().getNameOfBank());
-        donationAmount.sendKeys(donation.getAmount().toString());
+        donationAmount.sendKeys(numberFormat.format(donation.getAmount()));
     }
 
     public void doDonation() {
