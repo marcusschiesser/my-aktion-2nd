@@ -7,11 +7,13 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @NamedQueries({
+        @NamedQuery(name = Campaign.findByOrganizer, query = "SELECT c FROM Campaign c WHERE c.organizer = :organizer ORDER BY c.name"),
         @NamedQuery(name = Campaign.findAll, query = "SELECT a FROM Campaign a ORDER BY a.name"),
         @NamedQuery(name = Campaign.getAmountDonatedSoFar, query = "SELECT SUM(d.amount) FROM Donation d WHERE d.campaign = :campaign")
 })
 @Entity
 public class Campaign {
+    public static final String findByOrganizer = "Campaign.findByOrganizer";
     public static final String findAll = "Campaign.findAll";
     public static final String getAmountDonatedSoFar = "Campaign.getAmountDonatedSoFar";
 
@@ -40,6 +42,9 @@ public class Campaign {
 
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.REMOVE)
     private List<Donation> donations;
+
+    @ManyToOne
+    private Organizer organizer;
 
     public Campaign() {
         account = new Account();
@@ -101,4 +106,11 @@ public class Campaign {
         this.donations = donations;
     }
 
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
 }
