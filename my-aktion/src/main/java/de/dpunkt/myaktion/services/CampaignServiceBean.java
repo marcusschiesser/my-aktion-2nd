@@ -1,7 +1,10 @@
 package de.dpunkt.myaktion.services;
 
 import de.dpunkt.myaktion.model.Campaign;
+import de.dpunkt.myaktion.model.Organizer;
 
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -13,9 +16,13 @@ public class CampaignServiceBean implements CampaignService {
     @Inject
     EntityManager entityManager;
 
+    @Resource
+    private SessionContext sessionContext;
+
     @Override
     public List<Campaign> getAllCampaigns() {
-        TypedQuery<Campaign> query = entityManager.createNamedQuery(Campaign.findAll, Campaign.class);
+        TypedQuery<Campaign> query = entityManager.createNamedQuery(Campaign.findByOrganizer, Campaign.class);
+        query.setParameter("organizer", getLoggedinOrganizer());
         List<Campaign> campaigns = query.getResultList();
         campaigns.forEach(campaign -> campaign.setAmountDonatedSoFar(getAmountDonatedSoFar(campaign)));
         return campaigns;
@@ -23,6 +30,8 @@ public class CampaignServiceBean implements CampaignService {
 
     @Override
     public void addCampaign(Campaign campaign) {
+        Organizer organizer = getLoggedinOrganizer();
+        campaign.setOrganizer(organizer);
         entityManager.persist(campaign);
     }
 
@@ -45,5 +54,13 @@ public class CampaignServiceBean implements CampaignService {
             result = 0d;
         return result;
     }
+
+    private Organizer getLoggedinOrganizer() {
+        String organizerEmail = sessionContext.getCallerPrincipal().getName();
+        Organizer organizer = entityManager.createNamedQuery(Organizer.findByEmail, Organizer.class)
+                .setParameter("email", organizerEmail).getSingleResult();
+        return organizer;
+    }
+
 
 }
