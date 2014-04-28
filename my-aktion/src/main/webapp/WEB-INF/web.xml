@@ -15,6 +15,9 @@
         <auth-constraint>
             <role-name>Organizer</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-role>
         <role-name>Organizer</role-name>
