@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
-@Location("editCampaign.jsf")
+@Location("organizer/editCampaign.jsf")
 public class EditCampaignPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id,'a_name')]")
     private WebElement campaignName;

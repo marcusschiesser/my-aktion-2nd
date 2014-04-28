@@ -1,6 +1,8 @@
 package de.dpunkt.myaktion.test;
 
+import de.dpunkt.myaktion.test.pages.LoginPage;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.importer.ZipImporter;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -20,4 +22,10 @@ public abstract class AbstractITCase {
         archive.addAsWebInfResource("test-ds.xml", "test-ds.xml");
         return archive;
     }
+
+    protected void login() {
+        final LoginPage loginPage = Graphene.goTo(LoginPage.class);
+        loginPage.doLogin("max@mustermann.de", "secret");
+    }
+
 }

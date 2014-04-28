@@ -11,7 +11,7 @@ import java.util.Locale;
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 import static org.junit.Assert.assertEquals;
 
-@Location("listCampaigns.jsf")
+@Location("organizer/listCampaigns.jsf")
 public class ListCampaignsPage extends AbstractPage {
     @FindBy(xpath = "//tbody/tr[last()]/td[2]")
     private WebElement lastCampaignName;
