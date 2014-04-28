@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<body>
+<f:view contracts="#{view.locale.language}">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <b style="color: red;">#{msg['login.errorMsg']}</b>
+
+            <form method="post" action="j_security_check">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{msg['login.email']}:"/>
+                    <input type="text" name="j_username"/>
+                    <h:outputLabel value="#{msg['login.password']}:"/>
+                    <input type="password" name="j_password"/>
+                </h:panelGrid>
+                <input type="submit" value="#{msg['login.login']}"/>
+            </form>
+        </ui:define>
+    </ui:composition>
+</f:view>
+</body>
+</html>

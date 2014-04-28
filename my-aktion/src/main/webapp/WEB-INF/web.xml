@@ -4,8 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>MyAktion - Basic Authentications</realm-name>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsf</form-login-page>
+            <form-error-page>/loginError.jsf</form-error-page>
+        </form-login-config>
     </login-config>
     <security-constraint>
         <web-resource-collection>
