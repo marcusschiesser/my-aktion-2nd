@@ -4,6 +4,7 @@ import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Organizer;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -11,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@RolesAllowed("Organizer")
 @Stateless
 public class CampaignServiceBean implements CampaignService {
     @Inject
