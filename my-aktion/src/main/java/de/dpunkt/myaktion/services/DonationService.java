@@ -8,4 +8,6 @@ public interface DonationService {
     List<Donation> getDonationList(Long campaignId);
 
     void addDonation(Long campaignId, Donation donation);
+
+    void transferDonations();
 }
