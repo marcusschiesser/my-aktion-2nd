@@ -31,10 +31,11 @@ public class CampaignServiceBean implements CampaignService {
     }
 
     @Override
-    public void addCampaign(Campaign campaign) {
+    public Campaign addCampaign(Campaign campaign) {
         Organizer organizer = getLoggedinOrganizer();
         campaign.setOrganizer(organizer);
         entityManager.persist(campaign);
+        return campaign;
     }
 
     @Override
@@ -44,8 +45,20 @@ public class CampaignServiceBean implements CampaignService {
     }
 
     @Override
-    public void updateCampaign(Campaign campaign) {
-        entityManager.merge(campaign);
+    public Campaign updateCampaign(Campaign campaign) {
+        return entityManager.merge(campaign);
+    }
+
+    @Override
+    public void deleteCampaign(Long campaignId) {
+        Campaign managedCampaign = getCampaign(campaignId);
+        entityManager.remove(managedCampaign);
+    }
+
+    @Override
+    public Campaign getCampaign(Long campaignId) {
+        Campaign managedCampaign = entityManager.find(Campaign.class, campaignId);
+        return managedCampaign;
     }
 
     private Double getAmountDonatedSoFar(Campaign campaign) {
