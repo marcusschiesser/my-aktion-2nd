@@ -2,17 +2,27 @@ package de.dpunkt.myaktion.monitor;
 
 import de.dpunkt.myaktion.model.Donation;
 
+import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+@Dependent
 @ServerEndpoint(value = "/donation", encoders = {DonationEncoder.class})
 public class MonitorWebSocket {
+    public static final String CAMPAIGN_ID = "CampaignId";
+
     private Logger logger = Logger.getLogger(MonitorWebSocket.class.getName());
+
+    @Inject
+    private DonationListProvider donationListProvider;
 
     @OnOpen
     public void onOpen(Session session) {
@@ -29,13 +39,22 @@ public class MonitorWebSocket {
         logger.info("Client " + session.getId() + " hat Aktion " + campaignId
                 + " ausgewählt.");
         try {
-            Donation s1 = new Donation();
-            s1.setAmount(20.0);
-            s1.setDonorName("Heinz Schmidt");
-            Donation s2 = new Donation();
-            s2.setAmount(30.0);
-            s2.setDonorName("Karl Meier");
-            List<Donation> donations = Arrays.asList(s1, s2);
+            List<Donation> donations = new LinkedList<>();
+            try {
+                donations = donationListProvider.getDonationList(campaignId);
+            } catch (NotFoundException e) {
+                session.getBasicRemote().sendText(
+                        "Die Aktion mit der ID: " + campaignId
+                                + " ist nicht verfügbar"
+                );
+            } catch (WebApplicationException e) {
+                logger.log(Level.SEVERE, "Die Spendenliste für Aktion mit ID: "
+                        + campaignId
+                        + " konnte nicht abgerufen werden. Läuft der JBoss?", e);
+                session.getBasicRemote().sendText(
+                        "Fehler beim Abruf der initialen Spendenliste.");
+            }
+            session.getUserProperties().put(CAMPAIGN_ID, campaignId);
             for (Donation donation : donations) {
                 logger.info("Sende " + donation + " an Client " + session.getId());
                 session.getBasicRemote().sendObject(donation);
