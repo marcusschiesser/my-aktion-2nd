@@ -1,10 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Start Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>My-Aktion-Monitor</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/screen.css">
 </head>
 <body>
-<h1>Hello World!</h1>
+<script>
+    function setCampaignId(id) {
+        if (id.match(/^\d+$/) !== null) {
+            clearText();
+            websocket.send(id);
+            console.log("sende: " + id);
+        } else {
+            writeError("Keine gültige Aktion-ID. Eingabe wiederholen!");
+        }
+    }
+
+    function clearText() {
+        var output = document.getElementById("output");
+        while (output.hasChildNodes()) {
+            output.removeChild(output.firstChild);
+        }
+    }
+
+    function writeText(message, pClass) {
+        var p = document.createElement("p");
+        p.setAttribute('class', pClass);
+        var text = document.createTextNode(message);
+        p.appendChild(text);
+        document.getElementById("output").appendChild(p);
+    }
+
+    function writeError(message) {
+        writeText(message, 'error');
+    }
+
+    var websocket = new WebSocket("ws://" + document.location.host + document.location.pathname + "donation");
+
+    websocket.onopen = function (event) {
+        writeText("Verbunden! Bitte wählen Sie eine Aktion.");
+    };
+    websocket.onclose = function (event) {
+        writeText("Die Verbindung wurde geschlossen!");
+    };
+    websocket.onmessage = function (event) {
+        writeText(event.data);
+    };
+    websocket.onerror = function (event) {
+        writeError(event.data);
+    };
+</script>
+
+<div id="container">
+    <div id="header">
+        <p>Beispielanwendung <b>My-Aktion-Monitor</b> – Workshop Java EE 7</p>
+    </div>
+    <div id="content">
+        <form action="">
+            <label for="campaignId">Aktion-ID:</label>
+            <input id="campaignId" type="text">
+            <input onclick="setCampaignId(document.
+						getElementById('campaignId').value);"
+                   value="Setzen" type="button">
+        </form>
+        <div id="output"></div>
+    </div>
+    <div id="footer">
+        <p>(C) 2013 dpunkt.verlag GmbH, MIT Lizenz</p>
+    </div>
+</div>
 </body>
 </html>
