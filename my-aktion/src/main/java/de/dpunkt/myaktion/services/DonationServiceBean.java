@@ -3,6 +3,7 @@ package de.dpunkt.myaktion.services;
 import de.dpunkt.myaktion.model.Campaign;
 import de.dpunkt.myaktion.model.Donation;
 import de.dpunkt.myaktion.model.Donation.Status;
+import de.dpunkt.myaktion.monitor.ws.DonationDelegatorService;
 import de.dpunkt.myaktion.services.exceptions.ObjectNotFoundException;
 
 import javax.annotation.security.PermitAll;
@@ -37,6 +38,14 @@ public class DonationServiceBean implements DonationService {
     @Override
     @PermitAll
     public void addDonation(Long campaignId, Donation donation) {
+        try {
+            DonationDelegatorService delegatorService = new DonationDelegatorService();
+            delegatorService.getDonationDelegatorPort()
+                    .sendDonation(campaignId, donation);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE,
+                    "Spende nicht weitergeleitet. Läuft der Glassfish?", e);
+        }
         Campaign managedCampaign = entityManager.find(Campaign.class, campaignId);
         donation.setCampaign(managedCampaign);
         entityManager.persist(donation);
