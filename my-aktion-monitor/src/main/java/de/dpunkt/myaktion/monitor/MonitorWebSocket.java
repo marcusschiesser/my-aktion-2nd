@@ -9,8 +9,7 @@ import javax.websocket.server.ServerEndpoint;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,14 +23,22 @@ public class MonitorWebSocket {
     @Inject
     private DonationListProvider donationListProvider;
 
+    private static Set<Session> sessions = Collections.synchronizedSet(new HashSet<Session>());
+
+    public static Set<Session> getSessions() {
+        return sessions;
+    }
+
     @OnOpen
     public void onOpen(Session session) {
         logger.info("Client hat sich verbunden: " + session);
+        sessions.add(session);
     }
 
     @OnClose
     public void onClose(Session session) {
         logger.info("Client hat Verbindung getrennt: " + session);
+        sessions.remove(session);
     }
 
     @OnMessage
