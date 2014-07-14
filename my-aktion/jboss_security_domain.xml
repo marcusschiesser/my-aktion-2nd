@@ -1,4 +1,4 @@
-<!-- Den folgenden Abschnitt zur WildFly-Konfigurations-Datei
+﻿<!-- Den folgenden Abschnitt zur WildFly-Konfigurations-Datei
      standalone/configuration/standalone.xml in den Tag <security-domains> einfügen -->
 <security-domain name="my-aktion" cache-type="default">
     <authentication>
@@ -8,6 +8,9 @@
                            value="select password from organizer where email=?"/>
             <module-option name="rolesQuery"
                            value="select 'Organizer','Roles' from organizer where email=?"/>
+            <module-option name="hashAlgorithm" value="SHA-256" />
+            <module-option name="hashEncoding" value="hex" />
+            <module-option name="hashCharset" value="UTF-8" />
         </login-module>
     </authentication>
 </security-domain>
