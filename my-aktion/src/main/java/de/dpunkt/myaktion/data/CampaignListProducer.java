@@ -12,13 +12,11 @@ import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
 import java.util.List;
 
 @RequestScoped
-public class CampaignListProducer implements Serializable {
+public class CampaignListProducer {
 
-    private static final long serialVersionUID = -182866064791747156L;
     private List<Campaign> campaigns;
 
     @Inject
