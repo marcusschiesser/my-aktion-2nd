@@ -10,7 +10,7 @@ import java.util.Locale;
 
 import static org.jboss.arquillian.graphene.Graphene.guardHttp;
 
-@Location("organizer/donateMoney.jsf")
+@Location("donateMoney.jsf")
 public class DonateMoneyPage extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id,'name')]")
     private WebElement name;

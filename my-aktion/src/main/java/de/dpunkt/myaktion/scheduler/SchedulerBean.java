@@ -13,7 +13,7 @@ public class SchedulerBean {
     private DonationService donationService;
 
     @Schedule(hour = "*", minute = "*/5", persistent = false)
-    public void doTransferDonation() {
+    public void doTransferDonations() {
         donationService.transferDonations();
     }
 }
