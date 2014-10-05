@@ -27,6 +27,7 @@ public class Campaign {
     @DecimalMin(value = "1.00", message = "{campaign.donationMinimum.decimalMin}")
     private Double donationMinimum;
 
+    @Transient
     private Double amountDonatedSoFar;
 
     @AttributeOverrides({@AttributeOverride(name = "name", column = @Column(name = "accountName"))})
