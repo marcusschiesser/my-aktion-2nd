@@ -5,8 +5,7 @@
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
     <extension qualifier="webdriver">
-        <property name="browser">phantomjs</property>
-        <property name="phantomjs.page.customHeaders.Accept-Language">de-de</property>
+        <property name="browser">firefox</property>
     </extension>
 
 </arquillian>
